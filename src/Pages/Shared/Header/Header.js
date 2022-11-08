@@ -25,7 +25,7 @@ const Header = () => {
   }, [dark]);
 
   return (
-    <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-600">
+    <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-600 sticky top-0 z-50">
       <Navbar
         className="px-5 sm:px-4 py-3 w-full max-w-7xl mx-auto z-20"
         fluid={true}
