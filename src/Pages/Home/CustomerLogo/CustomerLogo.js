@@ -14,42 +14,42 @@ const CustomerLogo = () => {
           My Clients
         </h2>
         <div className="grid grid-cols-2 gap-2 text-center lg:grid-cols-6">
-          <div className="flex items-center justify-center p-6 bg-opacity-25 bg-blue-200 rounded-md">
+          <div className="flex items-center justify-center p-6 bg-opacity-25 dark:bg-slate-800 bg-blue-200 rounded-md">
             <img
               src={todoList}
               alt="Todoist Logo"
               className="block object-contain h-16"
             />
           </div>
-          <div className="flex items-center justify-center p-6 bg-opacity-25 bg-blue-200 rounded-md">
+          <div className="flex items-center justify-center p-6 bg-opacity-25 dark:bg-slate-800 bg-blue-200 rounded-md">
             <img
               src={slack}
               alt="Slack Logo"
               className="block object-contain h-16"
             />
           </div>
-          <div className="flex items-center justify-center p-6 bg-opacity-25 bg-blue-200 rounded-md">
+          <div className="flex items-center justify-center p-6 bg-opacity-25 dark:bg-slate-800 bg-blue-200 rounded-md">
             <img
               src={typeForm}
               alt="Typeform Logo"
               className="block object-contain h-16"
             />
           </div>
-          <div className="flex items-center justify-center p-6 bg-opacity-25 bg-blue-200 rounded-md">
+          <div className="flex items-center justify-center p-6 bg-opacity-25 dark:bg-slate-800 bg-blue-200 rounded-md">
             <img
               src={postcss}
               alt="Postcss Logo"
               className="block object-contain h-16"
             />
           </div>
-          <div className="flex items-center justify-center p-6 bg-opacity-25 bg-blue-200 rounded-md">
+          <div className="flex items-center justify-center p-6 bg-opacity-25 dark:bg-slate-800 bg-blue-200 rounded-md">
             <img
               src={yahoo}
               alt="Yahoo Logo"
               className="block object-contain h-16"
             />
           </div>
-          <div className="flex items-center justify-center p-6 bg-opacity-25 bg-blue-200 rounded-md">
+          <div className="flex items-center justify-center p-6 bg-opacity-25 dark:bg-slate-800 bg-blue-200 rounded-md">
             <img
               src={algolia}
               alt="Algolia Logo"

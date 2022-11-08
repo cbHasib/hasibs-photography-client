@@ -63,8 +63,9 @@ const Banner = () => {
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
+        cssMode={true}
         autoplay={{
-          delay: 3000,
+          delay: 4000,
           disableOnInteraction: false,
         }}
         pagination={{
