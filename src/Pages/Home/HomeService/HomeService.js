@@ -4,7 +4,7 @@ import ServiceCard from "../../Services/ServiceCard/ServiceCard";
 
 const HomeService = () => {
   return (
-    <div className="py-32 px-auto bg-gray-100 dark:bg-slate-900 border-b border-gray-800">
+    <div className="py-32 px-auto bg-gray-100 dark:bg-slate-900 dark:border-b dark:border-gray-800">
       <h2 className="text-center text-4xl lg:text-5xl font-semibold mb-12 text-slate-700 dark:text-gray-300">
         My Service
       </h2>

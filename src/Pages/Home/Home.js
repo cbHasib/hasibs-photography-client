@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "./Banner/Banner";
+import CustomerLogo from "./CustomerLogo/CustomerLogo";
 import HomeAbout from "./HomeAbout/HomeAbout";
 import HomeCTA from "./HomeCTA/HomeCTA";
 import HomeService from "./HomeService/HomeService";
@@ -10,6 +11,7 @@ const Home = () => {
       <Banner />
       <HomeAbout />
       <HomeService />
+      <CustomerLogo />
       <HomeCTA />
     </div>
   );
