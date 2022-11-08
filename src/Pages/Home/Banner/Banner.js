@@ -12,56 +12,48 @@ import "./Banner.css";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
 
-import slider1 from "../../../assets/images/banner/1.jpg";
-import slider2 from "../../../assets/images/banner/2.jpg";
-import slider3 from "../../../assets/images/banner/3.jpg";
-import slider4 from "../../../assets/images/banner/4.jpg";
-import slider5 from "../../../assets/images/banner/5.jpg";
-import slider6 from "../../../assets/images/banner/6.jpg";
+import slider1 from "../../../assets/images/banner/product.jpg";
+import slider2 from "../../../assets/images/banner/corporate.jpg";
+import slider3 from "../../../assets/images/banner/wedding.jpg";
+import slider4 from "../../../assets/images/banner/interior.jpg";
+import slider5 from "../../../assets/images/banner/industrial.jpg";
 import { Button } from "flowbite-react";
 
 const sliders = [
   {
     id: 1,
     img: slider1,
-    title: "Affordable Price For Car Servicing",
+    title: "Product Photography",
     subtitle:
-      "There are many variations of passages of available, but the majority have suffered alteration in some form",
+      "Though product photography sounds all simple but it's tricky and challenging. There is a difference between capturing a photo of human beings and products.",
   },
   {
     id: 2,
     img: slider2,
-    title: "Affordable Price For Car Servicing",
+    title: "Corporate Photography",
     subtitle:
-      "There are many variations of passages of available, but the majority have suffered alteration in some form",
+      "You will have some fresh corporate ideas from Hasib's photography.",
   },
   {
     id: 3,
     img: slider3,
-    title: "Affordable Price For Car Servicing",
+    title: "Wedding Photography",
     subtitle:
-      "There are many variations of passages of available, but the majority have suffered alteration in some form",
+      "Hasib has been successfully covering wedding events as well with his photography creativity to make the day special for couples.",
   },
   {
     id: 4,
     img: slider4,
-    title: "Affordable Price For Car Servicing",
+    title: "Interior Photography",
     subtitle:
-      "There are many variations of passages of available, but the majority have suffered alteration in some form",
+      "Each type of photography requires different skills and levels of dedication. Because you have to put more time and effort while doing post-production photography.",
   },
   {
     id: 5,
     img: slider5,
-    title: "Affordable Price For Car Servicing",
+    title: "Industrial Photography",
     subtitle:
-      "There are many variations of passages of available, but the majority have suffered alteration in some form",
-  },
-  {
-    id: 6,
-    img: slider6,
-    title: "Affordable Price For Car Servicing",
-    subtitle:
-      "There are many variations of passages of available, but the majority have suffered alteration in some form",
+      "Only photographers like hasibul Hasan can come up with an innovative camera angle even while taking photos of the machine and working people.",
   },
 ];
 
