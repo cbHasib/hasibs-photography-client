@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Hasib's Photography - React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was made by [Hasibul Hasan](https://github.com/cbHasib) with [React JS](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+## **`Feature List`**
 
-### `npm start`
+In the project directory, you will find these feature: \
+<span style="color:#00C49F">**1. Fully Responsive** </span> \
+<span style="color:#00C49F">**2. Dark Mode** </span> \
+<span style="color:#00C49F">**3. Login & Register using email, google, github** </span> \
+<span style="color:#00C49F">**4. Blog** </span> \
+<span style="color:#00C49F">**5. Single Blog Template** </span> \
+<span style="color:#00C49F">**6. Blog Post View Count** </span>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## **`Useful Links`**
 
-### `npm test`
+**1. [Github Client Site Repository](https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-cbHasib)** \
+**2. [Github Server Site Repository](https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-cbHasib)** \
+**3. [Live Website](https://)**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br>
 
-### `npm run build`
+## **`Credits`**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Hasib's Photography acknowledge the hard work and contribution of the following third party libraries and framework. <br> We used and take inspiration from the following third party libraries/framework.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**1. [React Router](https://tailwindcss.com/) - React Router** \
+**2. [TailwindCSS](https://tailwindcss.com/) - CSS Framework** \
+**3. [Flowbite](https://flowbite.com/) - Flowbite CSS plugin** \
+**4. [Firebase](https://firebase.google.com/) - Using for authentication and deploy** \
+**5. [React Router](https://reactrouter.com/) - Client side routing** \
+**6. [React Toastify](https://fkhadra.github.io/react-toastify/) - ReactTostify for Showing Toast to the user**\
+**7. [React Icons](https://react-icons.github.io/react-icons/) - React Icons for using various icons**
