@@ -22,10 +22,12 @@ const Inbox = () => {
           setLoad(false);
         } else {
           toast.error(data.error);
+          setLoad(false);
         }
       })
       .catch((error) => {
         toast.error(error.message);
+        setLoad(false);
       });
   }, [refresh]);
 

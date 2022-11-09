@@ -1,6 +1,7 @@
 import DashboardLayout from "../Layout/DashboardLayout";
 import Blog from "../Pages/Blog/Blog";
 import SingleBlog from "../Pages/Blog/SingleBlog";
+import Contact from "../Pages/Contact/Contact";
 import AddNewBlog from "../Pages/Dashboard/BlogControl/AddNewBlog/AddNewBlog";
 import AddNewBlogAuthor from "../Pages/Dashboard/BlogControl/BlogAuthor/AddNewBlogAuthor";
 import UpdateBlogAuthor from "../Pages/Dashboard/BlogControl/BlogAuthor/UpdateBlogAuthor";
@@ -53,6 +54,10 @@ export const Router = createBrowserRouter([
       {
         path: "/blog/post/:cat_slug/:slug",
         element: <SingleBlog />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "/test",
