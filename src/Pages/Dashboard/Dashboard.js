@@ -23,7 +23,7 @@ const Dashboard = () => {
       ) : error ? (
         <ErrorMessage error={error} />
       ) : (
-        <section className="p-6 my-6 dark:bg-gray-800 dark:text-gray-100">
+        <section className="p-6">
           <div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-4">
             <div className="shadow-lg rounded-2xl w-full p-4 bg-white dark:bg-gray-800 hover:bg-purple-300 duration-300 ">
               <div className="flex items-center">

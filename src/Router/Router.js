@@ -1,6 +1,7 @@
 import DashboardLayout from "../Layout/DashboardLayout";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Inbox from "../Pages/Dashboard/Inbox/Inbox";
+import MyReviews from "../Pages/Dashboard/MyReviews/MyReviews";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ServiceDetails from "../Pages/Services/ServiceDetails/ServiceDetails";
@@ -58,6 +59,10 @@ export const Router = createBrowserRouter([
       {
         path: "/admin/services",
         element: <Dashboard />,
+      },
+      {
+        path: "/admin/my-reviews",
+        element: <MyReviews />,
       },
       {
         path: "/admin/inbox",
