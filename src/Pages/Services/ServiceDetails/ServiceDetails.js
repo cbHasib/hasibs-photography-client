@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import CustomerReview from "./CustomerReview";
 import AddReview from "./AddReview";
+import UserRequired from "./UserRequired";
 
 const ServiceDetails = () => {
   const { register, handleSubmit } = useForm();
@@ -68,7 +69,7 @@ const ServiceDetails = () => {
         className="py-12 bg-gray-100 dark:bg-slate-900 dark:border-b dark:border-gray-800"
       >
         <div className="grid grid-cols-3 px-5 sm:px-4 py-3 gap-4 w-full max-w-7xl mx-auto">
-          <div className="col-span-2 bg-white rounded-md dark:bg-slate-800 pt-6 pb-12 px-5 lg:px-10">
+          <div className="col-span-3 lg:col-span-2 bg-white rounded-md dark:bg-slate-800 pt-6 pb-12 px-5 lg:px-10">
             <div className="flex justify-between items-center pb-2 dark:text-white/80">
               <h2 className="text-2xl font-bold mb-3">Service Details</h2>
               <h2 className="text-xl font-semibold mb-3">Price: ৳764</h2>
@@ -127,9 +128,12 @@ const ServiceDetails = () => {
             <div className="mt-16">
               <AddReview />
             </div>
+            <div className="mt-16">
+              <UserRequired />
+            </div>
           </div>
 
-          <div className="w-full px-5">
+          <div className="w-full px-5 col-span-3 lg:col-span-1">
             <div className="bg-white dark:bg-slate-800 rounded-md shadow-md p-7 sm:p-10 sticky top-20">
               <h3 className="dark:text-white/90 mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl underline  decoration-3 decoration-blue-400 dark:decoration-blue-600">
                 Book Now

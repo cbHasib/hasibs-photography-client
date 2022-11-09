@@ -22,6 +22,8 @@ const CustomerReview = () => {
           currentPage={6}
           totalPages={100}
           onPageChange={onPageChange}
+          showIcons={true}
+          layout="navigation"
         />
       </div>
     </div>
