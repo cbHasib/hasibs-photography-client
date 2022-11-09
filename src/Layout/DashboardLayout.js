@@ -8,7 +8,7 @@ const DashboardLayout = () => {
   return (
     <>
       <Header />
-      <div className="bg-white dark:bg-gray-900 flex flex-col lg:flex-row">
+      <div className="bg-slate-200 dark:bg-gray-900 flex flex-col lg:flex-row">
         <div className="hidden lg:block">
           <Sidebar />
         </div>

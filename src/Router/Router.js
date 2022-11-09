@@ -1,5 +1,6 @@
 import DashboardLayout from "../Layout/DashboardLayout";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import Inbox from "../Pages/Dashboard/Inbox/Inbox";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ServiceDetails from "../Pages/Services/ServiceDetails/ServiceDetails";
@@ -47,12 +48,20 @@ export const Router = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <Dashboard />,
+      },
+      {
+        index: true,
         path: "/admin/dashboard",
         element: <Dashboard />,
       },
       {
         path: "/admin/services",
         element: <Dashboard />,
+      },
+      {
+        path: "/admin/inbox",
+        element: <Inbox />,
       },
     ],
   },

@@ -3,6 +3,7 @@ import {
   HiOutlineCamera,
   HiOutlineChartPie,
   HiOutlineLogout,
+  HiOutlineStar,
 } from "react-icons/hi";
 import {
   HiOutlineInboxArrowDown,
@@ -12,8 +13,8 @@ import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <aside class="lg:w-64 px-7 lg:px-0" aria-label="Sidebar">
-      <div class="overflow-y-auto py-4 px-3 bg-gray-50 dark:bg-gray-800">
+    <aside class="lg:w-64 px-7 lg:px-0 h-full" aria-label="Sidebar">
+      <div class="overflow-y-auto py-4 px-3 bg-gray-50 h-full dark:bg-gray-800">
         <ul class="space-y-2">
           <li>
             <NavLink
@@ -48,6 +49,25 @@ const Sidebar = () => {
               dark:group-hover:text-white"
               />
               <span class="ml-3">Services</span>
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/admin/my-reviews"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white bg-gray-200 dark:bg-gray-700"
+                  : "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              }
+            >
+              <HiOutlineStar
+                aria-hidden="true"
+                class="w-6 h-6 text-gray-500 transition
+              duration-75 dark:text-gray-400 group-hover:text-gray-900
+              dark:group-hover:text-white"
+              />
+              <span class="ml-3">My Reviews</span>
             </NavLink>
           </li>
 
