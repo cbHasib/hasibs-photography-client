@@ -35,7 +35,11 @@ const Header = () => {
         fluid={true}
       >
         <Navbar.Brand>
-          <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+          <img
+            src={logo}
+            className="mr-3 h-6 sm:h-9"
+            alt="Hasib's Photography Logo"
+          />
           <div className="flex flex-col gap-0">
             <span className="text-xl my-0 py-0 font-semibold dark:text-white">
               Hasib's

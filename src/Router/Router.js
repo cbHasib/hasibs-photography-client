@@ -1,4 +1,6 @@
 import DashboardLayout from "../Layout/DashboardLayout";
+import Blog from "../Pages/Blog/Blog";
+import SingleBlog from "../Pages/Blog/SingleBlog";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Inbox from "../Pages/Dashboard/Inbox/Inbox";
 import MyReviews from "../Pages/Dashboard/MyReviews/MyReviews";
@@ -36,6 +38,14 @@ export const Router = createBrowserRouter([
       {
         path: "/services/:id",
         element: <ServiceDetails />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/blog/post/:cat_slug/:slug",
+        element: <SingleBlog />,
       },
       {
         path: "/test",
