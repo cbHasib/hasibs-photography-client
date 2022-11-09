@@ -1,11 +1,15 @@
 import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Header.css";
 import logo from "../../../assets/images/logo.png";
+import { AuthContext } from "../../../Context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [dark, setDark] = useState(false);
-  const user = true;
+  const { user, logout } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem("dark") === "true") {
@@ -76,29 +80,37 @@ const Header = () => {
                 label={
                   <Avatar
                     alt="User settings"
-                    img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                    img={user?.photoURL}
+                    referrerPolicy="no-referrer"
                     rounded={true}
                   />
                 }
               >
                 <Dropdown.Header>
-                  <span className="block text-sm">Bonnie Green</span>
+                  <span className="block text-sm">{user?.displayName}</span>
                   <span className="block truncate text-sm font-medium">
-                    name@flowbite.com
+                    {user?.email}
                   </span>
                 </Dropdown.Header>
                 <Dropdown.Item>Dashboard</Dropdown.Item>
                 <Dropdown.Item>Settings</Dropdown.Item>
                 <Dropdown.Item>Earnings</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item>Sign out</Dropdown.Item>
+                <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
               </Dropdown>
               <Navbar.Toggle />
             </>
           ) : (
             <>
-              <Button className="mr-3 hidden md:block">Register</Button>
-              <Button outline={true}>Login</Button>
+              <Button
+                className="mr-3 hidden md:block"
+                onClick={() => navigate("/register")}
+              >
+                Register
+              </Button>
+              <Button outline={true} onClick={() => navigate("/login")}>
+                Login
+              </Button>
               <Navbar.Toggle />
             </>
           )}
@@ -111,7 +123,7 @@ const Header = () => {
           <Navbar.Link href="/navbars">About</Navbar.Link>
           <Navbar.Link href="/navbars">Services</Navbar.Link>
           <Navbar.Link href="/navbars">Pricing</Navbar.Link>
-          <Navbar.Link href="/navbars">Contact</Navbar.Link>
+          <Navbar.Link onClick={() => navigate("/login")}>Contact</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </header>
