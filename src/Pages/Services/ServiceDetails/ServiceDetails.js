@@ -7,10 +7,19 @@ import {
   FaUser,
 } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import CustomerReview from "./CustomerReview";
+import AddReview from "./AddReview";
 
 const ServiceDetails = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
+  const images = [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png",
+    "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
+    "https://static.vecteezy.com/packs/media/vectors/term-bg-1-666de2d9.jpg",
+    "https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300",
+  ];
 
   return (
     <div>
@@ -58,27 +67,84 @@ const ServiceDetails = () => {
         id="details"
         className="py-12 bg-gray-100 dark:bg-slate-900 dark:border-b dark:border-gray-800"
       >
-        <div className="grid grid-cols-3 px-5 sm:px-4 py-3 w-full max-w-7xl mx-auto">
-          <div className="col-span-2 bg-white rounded-md">
-            <h2 className="text-2xl font-bold">Service Details</h2>
+        <div className="grid grid-cols-3 px-5 sm:px-4 py-3 gap-4 w-full max-w-7xl mx-auto">
+          <div className="col-span-2 bg-white rounded-md dark:bg-slate-800 pt-6 pb-12 px-5 lg:px-10">
+            <div className="flex justify-between items-center pb-2 dark:text-white/80">
+              <h2 className="text-2xl font-bold mb-3">Service Details</h2>
+              <h2 className="text-xl font-semibold mb-3">Price: ৳764</h2>
+            </div>
+            <p className="text-justify mb-7 dark:text-white/75">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
+              temporibus cupiditate quisquam? Cumque dolores eaque enim qui
+              veritatis, voluptatem corrupti, veniam repellat ducimus distinctio
+              perferendis explicabo est nulla perspiciatis eius? Vitae iure
+              nobis blanditiis necessitatibus est fugit id autem voluptate quia!
+              Doloremque, praesentium. Dicta nesciunt magni fugiat. Commodi
+              porro illo eius quis consequatur tempora at. Quis ducimus
+              repudiandae iure sapiente perspiciatis. Ducimus ullam sit magni
+              exercitationem tempore ipsa voluptatibus, sunt neque voluptatum,
+              aliquam aperiam. Laboriosam, modi quibusdam magni ipsum tempora
+              beatae officiis quaerat quam mollitia ducimus dolor labore
+              officia! Recusandae eveniet quidem incidunt perspiciatis sequi
+              repellat. Culpa doloremque sit obcaecati aut illo deleniti enim
+              assumenda, repellendus doloribus, beatae eaque itaque nisi quod
+              dolores minus quas aliquam deserunt maxime facere sequi!
+              Consequuntur commodi magni non enim sed ut inventore. Nostrum
+              maxime tempore ipsam quis dicta quasi magnam unde temporibus porro
+              voluptatem suscipit iste blanditiis aperiam, eius molestiae
+              incidunt tempora quae sint doloribus maiores vero! Minus officia
+              sit dolor voluptates, tempora temporibus quas accusantium
+              excepturi explicabo esse, tenetur animi quod cumque beatae libero
+              expedita, odio vel totam voluptatum illo placeat pariatur veniam?
+              Harum unde voluptates id quis facilis voluptatem cum dolor
+              veritatis nemo, voluptatibus nisi, eum dolores deserunt quos
+              commodi. Aliquid, quas.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-5 mb-3 dark:text-white/80">
+              Service Gallery
+            </h2>
+            <PhotoProvider>
+              <div className="flex flex-wrap gap-5 justify-center">
+                {images.map((item, index) => (
+                  <PhotoView key={index} src={item}>
+                    <figure className="relative">
+                      <img
+                        src={item}
+                        alt=""
+                        className="w-[120px] h-[120px] object-cover cursor-pointer rounded-md"
+                      />
+                      <div className="absolute inset-0 duration-300 hover:bg-blue-800 hover:bg-opacity-50 rounded-md"></div>
+                    </figure>
+                  </PhotoView>
+                ))}
+              </div>
+            </PhotoProvider>
+
+            <div className="mt-16">
+              <CustomerReview />
+            </div>
+            <div className="mt-16">
+              <AddReview />
+            </div>
           </div>
 
           <div className="w-full px-5">
-            <div className="bg-white rounded-md shadow-md p-7 sm:p-10">
-              <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl underline  decoration-3 decoration-blue-400 dark:decoration-blue-600">
+            <div className="bg-white dark:bg-slate-800 rounded-md shadow-md p-7 sm:p-10 sticky top-20">
+              <h3 className="dark:text-white/90 mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl underline  decoration-3 decoration-blue-400 dark:decoration-blue-600">
                 Book Now
               </h3>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex flex-col mb-2.5">
                   <div className="flex relative ">
-                    <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                    <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white dark:bg-slate-900 border-l border-b border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400 shadow-sm text-sm">
                       <FaUser />
                     </span>
                     <input
                       type="text"
                       {...register("name")}
                       id="name"
-                      className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                      className="rounded-r-lg flex-1 appearance-none border border-gray-300 dark:border-gray-700 w-full py-2 px-4 bg-white dark:bg-slate-900 text-gray-700 placeholder-gray-400 shadow-sm text-base dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                       placeholder="Your Name"
                     />
                   </div>
@@ -86,14 +152,14 @@ const ServiceDetails = () => {
 
                 <div className="flex flex-col mb-2.5">
                   <div className="flex relative ">
-                    <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                    <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white dark:bg-slate-900 border-l border-b border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400 shadow-sm text-sm">
                       <FaEnvelope />
                     </span>
                     <input
                       {...register("email")}
                       type="email"
                       id="email"
-                      className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                      className="rounded-r-lg flex-1 appearance-none border border-gray-300 dark:border-gray-700 w-full py-2 px-4 bg-white dark:bg-slate-900 text-gray-700 placeholder-gray-400 shadow-sm text-base dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                       placeholder="Your Email"
                     />
                   </div>
@@ -101,14 +167,14 @@ const ServiceDetails = () => {
 
                 <div className="flex flex-col mb-2.5">
                   <div className="flex relative ">
-                    <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                    <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white dark:bg-slate-900 border-l border-b border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400 shadow-sm text-sm">
                       <FaPhoneAlt />
                     </span>
                     <input
                       type="tel"
                       {...register("phone")}
                       id="phone"
-                      className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                      className="rounded-r-lg flex-1 appearance-none border border-gray-300 dark:border-gray-700 w-full py-2 px-4 bg-white dark:bg-slate-900 text-gray-700 placeholder-gray-400 shadow-sm text-base dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                       placeholder="Your Phone"
                     />
                   </div>
@@ -116,14 +182,14 @@ const ServiceDetails = () => {
 
                 <div className="flex flex-col mb-2.5">
                   <div className="flex relative ">
-                    <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                    <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white dark:bg-slate-900 border-l border-b border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400 shadow-sm text-sm">
                       <FaCalendar />
                     </span>
                     <input
                       type="date"
                       {...register("date")}
                       id="date"
-                      className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                      className="rounded-r-lg flex-1 appearance-none border border-gray-300 dark:border-gray-700 w-full py-2 px-4 bg-white dark:bg-slate-900 text-gray-700 placeholder-gray-400 shadow-sm text-base dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                       placeholder="Your Event Date"
                     />
                   </div>
@@ -131,14 +197,14 @@ const ServiceDetails = () => {
 
                 <div className="flex flex-col mb-6">
                   <div className="flex relative ">
-                    <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                    <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white dark:bg-slate-900 border-l border-b border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400 shadow-sm text-sm">
                       <FaMapPin />
                     </span>
                     <input
                       type="text"
                       {...register("address")}
                       id="address"
-                      className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                      className="rounded-r-lg flex-1 appearance-none border border-gray-300 dark:border-gray-700 w-full py-2 px-4 bg-white dark:bg-slate-900 text-gray-700 placeholder-gray-400 shadow-sm text-base dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                       placeholder="Your Address"
                     />
                   </div>
