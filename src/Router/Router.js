@@ -1,3 +1,5 @@
+import DashboardLayout from "../Layout/DashboardLayout";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ServiceDetails from "../Pages/Services/ServiceDetails/ServiceDetails";
@@ -36,6 +38,21 @@ export const Router = createBrowserRouter([
       {
         path: "/test",
         element: <Test />,
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        path: "/admin/dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/admin/services",
+        element: <Dashboard />,
       },
     ],
   },
