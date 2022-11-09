@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   FaCalendar,
   FaEnvelope,
@@ -11,8 +11,10 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import CustomerReview from "./CustomerReview";
 import AddReview from "./AddReview";
 import UserRequired from "./UserRequired";
+import { AuthContext } from "../../../Context/UserContext";
 
 const ServiceDetails = () => {
+  const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
   const images = [
@@ -68,8 +70,8 @@ const ServiceDetails = () => {
         id="details"
         className="py-12 bg-gray-100 dark:bg-slate-900 dark:border-b dark:border-gray-800"
       >
-        <div className="grid grid-cols-3 px-5 sm:px-4 py-3 gap-4 w-full max-w-7xl mx-auto">
-          <div className="col-span-3 lg:col-span-2 bg-white rounded-md dark:bg-slate-800 pt-6 pb-12 px-5 lg:px-10">
+        <div className="grid grid-cols-3 px-5 sm:px-4 py-3 gap-7 w-full max-w-7xl mx-auto">
+          <div className="col-span-3 lg:col-span-2 bg-white rounded-md dark:bg-slate-800 shadow-md pt-6 pb-12 px-5 lg:px-10">
             <div className="flex justify-between items-center pb-2 dark:text-white/80">
               <h2 className="text-2xl font-bold mb-3">Service Details</h2>
               <h2 className="text-xl font-semibold mb-3">Price: ৳764</h2>
@@ -126,16 +128,13 @@ const ServiceDetails = () => {
               <CustomerReview />
             </div>
             <div className="mt-16">
-              <AddReview />
-            </div>
-            <div className="mt-16">
-              <UserRequired />
+              {user ? <AddReview /> : <UserRequired />}
             </div>
           </div>
 
-          <div className="w-full px-5 col-span-3 lg:col-span-1">
+          <div className="w-full col-span-3 lg:col-span-1">
             <div className="bg-white dark:bg-slate-800 rounded-md shadow-md p-7 sm:p-10 sticky top-20">
-              <h3 className="dark:text-white/90 mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl underline  decoration-3 decoration-blue-400 dark:decoration-blue-600">
+              <h3 className="dark:text-white/90 mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl underline text-center decoration-3 decoration-blue-400 dark:decoration-blue-600">
                 Book Now
               </h3>
               <form onSubmit={handleSubmit(onSubmit)}>

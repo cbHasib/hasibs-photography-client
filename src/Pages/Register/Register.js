@@ -71,7 +71,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-[80vh] w-full bg-gray-200 dark:bg-slate-900 px-5">
+    <div className="flex justify-center items-center h-full py-14 w-full bg-gray-200 dark:bg-slate-900 px-5">
       <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
         <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
           Create a new account
