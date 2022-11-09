@@ -1,6 +1,7 @@
 import { Button, Label, Select, Textarea, TextInput } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 
 const AddNewService = () => {
@@ -18,7 +19,7 @@ const AddNewService = () => {
         setCount(parseInt(data.data));
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
 
     fetch(`${process.env.REACT_APP_SERVER_URL}/categories`)
@@ -29,7 +30,7 @@ const AddNewService = () => {
         setCategories(categoriesData);
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
 
     fetch(`${process.env.REACT_APP_SERVER_URL}/instructors`)

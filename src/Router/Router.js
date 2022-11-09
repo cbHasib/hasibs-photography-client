@@ -1,6 +1,13 @@
 import DashboardLayout from "../Layout/DashboardLayout";
 import Blog from "../Pages/Blog/Blog";
 import SingleBlog from "../Pages/Blog/SingleBlog";
+import AddNewBlog from "../Pages/Dashboard/BlogControl/AddNewBlog/AddNewBlog";
+import AddNewBlogAuthor from "../Pages/Dashboard/BlogControl/BlogAuthor/AddNewBlogAuthor";
+import UpdateBlogAuthor from "../Pages/Dashboard/BlogControl/BlogAuthor/UpdateBlogAuthor";
+import AddNewBlogCategory from "../Pages/Dashboard/BlogControl/BlogCategory/AddNewBlogCategory";
+import UpdateBlogCategory from "../Pages/Dashboard/BlogControl/BlogCategory/UpdateBlogCategory";
+import ManageBlog from "../Pages/Dashboard/BlogControl/ManageBlog/ManageBlog";
+import UpdateBlog from "../Pages/Dashboard/BlogControl/UpdateBlog/UpdateBlog";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Inbox from "../Pages/Dashboard/Inbox/Inbox";
 import MyReviews from "../Pages/Dashboard/MyReviews/MyReviews";
@@ -77,6 +84,34 @@ export const Router = createBrowserRouter([
       {
         path: "/admin/inbox",
         element: <Inbox />,
+      },
+      {
+        path: "/admin/blogs",
+        element: <ManageBlog />,
+      },
+      {
+        path: "/admin/blogs/add-author",
+        element: <AddNewBlogAuthor />,
+      },
+      {
+        path: "/admin/blogs/add-category",
+        element: <AddNewBlogCategory />,
+      },
+      {
+        path: "/admin/blogs/add-new-blog",
+        element: <AddNewBlog />,
+      },
+      {
+        path: "/admin/blogs/update-blog/:id",
+        element: <UpdateBlog />,
+      },
+      {
+        path: "/admin/blogs/update-author/:id",
+        element: <UpdateBlogAuthor />,
+      },
+      {
+        path: "/admin/blogs/update-category/:id",
+        element: <UpdateBlogCategory />,
       },
     ],
   },

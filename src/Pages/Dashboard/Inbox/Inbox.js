@@ -21,11 +21,11 @@ const Inbox = () => {
           setContacts(data.data.reverse());
           setLoad(false);
         } else {
-          alert(data.error);
+          toast.error(data.error);
         }
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
   }, [refresh]);
 
