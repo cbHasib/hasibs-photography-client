@@ -1,5 +1,8 @@
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import ServiceDetails from "../Pages/Services/ServiceDetails/ServiceDetails";
+import Services from "../Pages/Services/Services/Services";
+import Test from "../Pages/Shared/Test/Test";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: MainLayout } = require("../Layout/MainLayout");
@@ -21,6 +24,18 @@ export const Router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/services",
+        element: <Services />,
+      },
+      {
+        path: "/services/:id",
+        element: <ServiceDetails />,
+      },
+      {
+        path: "/test",
+        element: <Test />,
       },
     ],
   },

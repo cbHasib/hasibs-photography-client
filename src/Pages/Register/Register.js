@@ -94,6 +94,7 @@ const Register = () => {
             Google
           </button>
         </div>
+
         <div className="mt-8">
           <form onSubmit={handleRegister}>
             <div className="flex flex-col mb-2">

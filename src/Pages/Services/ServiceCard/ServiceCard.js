@@ -1,7 +1,10 @@
 import { Button, Rating } from "flowbite-react";
 import React from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const ServiceCard = () => {
+  const imgURL = "https://flowbite.com/docs/images/blog/image-1.jpg";
   const serviceDetails =
     "Full preparation guide on HSC Physics 1st Paper Syllabus. Ensure maximum preparation in the shortest possible time. Enroll now and secure an A+ in HSC Physics 1st Paper.";
   return (
@@ -11,11 +14,16 @@ const ServiceCard = () => {
         {"764"}
       </div>
       <div>
-        <img
-          src={"https://flowbite.com/docs/images/blog/image-1.jpg"}
-          alt=""
-          className="object-cover object-center w-full rounded-lg h-48 dark:bg-gray-500"
-        />
+        <PhotoProvider>
+          <PhotoView src={imgURL}>
+            <img
+              src={imgURL}
+              alt=""
+              className="object-cover object-center w-full rounded-lg h-48 dark:bg-gray-500"
+            />
+          </PhotoView>
+        </PhotoProvider>
+
         <div className="px-3 py-2 space-y-3">
           <h2 className="text-xl font-semibold tracking-wide text-ellipsis ">
             {"Wedding Photography"}
