@@ -1,6 +1,7 @@
 import { Avatar, Table } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 
 const ShowServices = () => {
@@ -17,11 +18,11 @@ const ShowServices = () => {
           setCourses(data.data);
           setLoad(false);
         } else {
-          alert(data.error);
+          toast.error(data.error);
         }
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
   }, [refresh]);
 
@@ -40,14 +41,14 @@ const ShowServices = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
-            alert(data.message);
+            toast.success(data.message);
             setRefresh(!refresh);
             setLoad(true);
           } else {
-            alert(data.error);
+            toast.error(data.error);
           }
         })
-        .catch((error) => alert(error.message));
+        .catch((error) => toast.error(error.message));
     }
   };
 

@@ -2,6 +2,7 @@ import { Button, Label, Select, Textarea, TextInput } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 
 const EditCourse = () => {
@@ -25,12 +26,12 @@ const EditCourse = () => {
         if (data.success) {
           setCourse(data.data);
         } else {
-          console.log(data.error);
+          toast.error(data.error);
         }
       })
 
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
 
     fetch(`${process.env.REACT_APP_SERVER_URL}/categories`)
@@ -40,7 +41,7 @@ const EditCourse = () => {
         setCategories(categoriesData);
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
 
     fetch(`${process.env.REACT_APP_SERVER_URL}/instructors`)
@@ -50,7 +51,7 @@ const EditCourse = () => {
         setLoad(false);
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
   }, [refresh, id]);
 
@@ -78,15 +79,15 @@ const EditCourse = () => {
       .then((data) => {
         console.log(data);
         if (data.success) {
-          alert(data.message);
+          toast.error(data.message);
           reset();
         } else {
-          alert(data.error);
+          toast.error(data.error);
         }
         setRefresh(!refresh);
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
   };
 

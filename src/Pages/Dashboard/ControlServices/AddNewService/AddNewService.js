@@ -40,7 +40,7 @@ const AddNewService = () => {
         setLoad(false);
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
   }, [refresh]);
 
@@ -69,14 +69,14 @@ const AddNewService = () => {
       .then((data) => {
         if (data.success) {
           reset();
-          alert(data.message);
+          toast.success(data.message);
         } else {
-          alert(data.error);
+          toast.error(data.error);
         }
         setRefresh(!refresh);
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
   };
 
