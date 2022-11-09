@@ -8,7 +8,7 @@ const ServiceCard = () => {
   const serviceDetails =
     "Full preparation guide on HSC Physics 1st Paper Syllabus. Ensure maximum preparation in the shortest possible time. Enroll now and secure an A+ in HSC Physics 1st Paper.";
   return (
-    <div className="max-w-[380px] w-full bg-white rounded-md shadow-md dark:bg-slate-800 dark:text-gray-100 p-3 flex flex-col justify-between text-center hover:-translate-y-1 duration-300 relative">
+    <div className="max-w-[380px] w-full bg-white rounded-md shadow-md dark:bg-slate-800 drop-shadow-2xl dark:text-gray-100 p-3 flex flex-col justify-between text-center hover:-translate-y-1 duration-300 relative">
       <div className="bg-orange-500 text-white p-1.5 rounded-full absolute top-1 right-1">
         <span className="font-serif">৳</span>
         {"764"}

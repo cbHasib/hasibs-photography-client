@@ -1,6 +1,5 @@
 import { Pagination } from "flowbite-react";
 import React from "react";
-import { Link } from "react-router-dom";
 import ServiceCard from "../ServiceCard/ServiceCard";
 
 const Services = () => {
