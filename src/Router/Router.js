@@ -11,6 +11,7 @@ import ManageBlog from "../Pages/Dashboard/BlogControl/ManageBlog/ManageBlog";
 import UpdateBlog from "../Pages/Dashboard/BlogControl/UpdateBlog/UpdateBlog";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Inbox from "../Pages/Dashboard/Inbox/Inbox";
+import ViewMail from "../Pages/Dashboard/Inbox/ViewMail";
 import MyReviews from "../Pages/Dashboard/MyReviews/MyReviews";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
@@ -89,6 +90,10 @@ export const Router = createBrowserRouter([
       {
         path: "/admin/inbox",
         element: <Inbox />,
+      },
+      {
+        path: "/admin/inbox/view/:id",
+        element: <ViewMail />,
       },
       {
         path: "/admin/blogs",

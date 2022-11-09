@@ -288,7 +288,7 @@ const AddNewService = () => {
                 <Textarea
                   {...register("courseAbout")}
                   id="courseAbout"
-                  placeholder="<p></p><p><strong class='text-lg'>Requirements</strong><br />This course is designed for HSC 1st and 2nd year students and HSC candidates.<br/><p></p>...................."
+                  placeholder="<p></p><p><strong className='text-lg'>Requirements</strong><br />This course is designed for HSC 1st and 2nd year students and HSC candidates.<br/><p></p>...................."
                   required={true}
                   rows={4}
                 />

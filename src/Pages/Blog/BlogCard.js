@@ -42,7 +42,7 @@ const BlogCard = ({ blog }) => {
             </h2>
             <p className="text-center ">{textBody + "..."}</p>
           </div>
-          <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 mt-auto" />
+          <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700 mt-auto" />
           <div className="flex justify-between items-center">
             <span className="m-0 p-0 text-base">{author}</span>
             <span className="m-0 p-0 text-base">{publishDate}</span>

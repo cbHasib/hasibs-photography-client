@@ -93,7 +93,7 @@ const Inbox = () => {
                     <Table.Cell>
                       <div className="flex gap-5">
                         <Link
-                          to={`/contacts/view-contact/${contact._id}`}
+                          to={`/admin/inbox/view/${contact._id}`}
                           className="font-medium text-blue-600 hover:underline dark:text-blue-500"
                         >
                           View

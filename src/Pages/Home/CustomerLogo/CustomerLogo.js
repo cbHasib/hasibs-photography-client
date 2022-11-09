@@ -10,7 +10,7 @@ const CustomerLogo = () => {
   return (
     <div className="bg-white dark:bg-slate-900 dark:border-b dark:border-gray-800">
       <section className="px-4 py-24 mx-auto max-w-7xl">
-        <h2 class="mb-5 text-3xl font-bold leading-tight text-center text-gray-800 md:text-4xl dark:text-gray-300">
+        <h2 className="mb-5 text-3xl font-bold leading-tight text-center text-gray-800 md:text-4xl dark:text-gray-300">
           My Clients
         </h2>
         <div className="grid grid-cols-2 gap-2 text-center lg:grid-cols-6">

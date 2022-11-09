@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { HiOutlineStar } from "react-icons/hi";
 import {
-  HiOutlineInboxArrowDown,
-  HiOutlinePencil,
-  HiOutlineWrenchScrewdriver,
-} from "react-icons/hi2";
+  HiOutlineStar,
+  HiOutlineViewGridAdd,
+  HiOutlineInboxIn,
+} from "react-icons/hi";
+import { HiOutlinePencilAlt } from "react-icons/hi";
 import ErrorMessage from "../Shared/ErrorMessage/ErrorMessage";
 import LoadingSpinner from "../Shared/LoadingSpinner/LoadingSpinner";
 
@@ -28,7 +28,7 @@ const Dashboard = () => {
             <div className="shadow-lg rounded-2xl w-full p-4 bg-white dark:bg-gray-800 hover:bg-purple-300 duration-300 ">
               <div className="flex items-center">
                 <span className="bg-green-500 p-2 h-7 w-7 rounded-full relative">
-                  <HiOutlineWrenchScrewdriver className="text-white h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                  <HiOutlineViewGridAdd className="text-white h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                 </span>
                 <p className="text-md text-gray-700 dark:text-gray-50 ml-2 font-medium">
                   Services
@@ -54,7 +54,7 @@ const Dashboard = () => {
             <div className="shadow-lg rounded-2xl w-full p-4 bg-white dark:bg-gray-800 hover:bg-purple-300 duration-300">
               <div className="flex items-center">
                 <span className="bg-green-500 p-2 h-7 w-7 rounded-full relative">
-                  <HiOutlineWrenchScrewdriver className="text-white h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                  <HiOutlineViewGridAdd className="text-white h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                 </span>
                 <p className="text-md text-gray-700 dark:text-gray-50 ml-2 font-medium">
                   Service Request
@@ -106,7 +106,7 @@ const Dashboard = () => {
             <div className="shadow-lg rounded-2xl w-full p-4 bg-white dark:bg-gray-800 hover:bg-purple-300 duration-300">
               <div className="flex items-center">
                 <span className="bg-green-500 p-2 h-7 w-7 rounded-full relative">
-                  <HiOutlineInboxArrowDown className="text-white h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                  <HiOutlineInboxIn className="text-white h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                 </span>
                 <p className="text-md text-gray-700 dark:text-gray-50 ml-2 font-medium">
                   Message
@@ -132,7 +132,7 @@ const Dashboard = () => {
             <div className="shadow-lg rounded-2xl w-full p-4 bg-white dark:bg-gray-800 hover:bg-purple-300 duration-300">
               <div className="flex items-center">
                 <span className="bg-green-500 p-2 h-7 w-7 rounded-full relative">
-                  <HiOutlinePencil className="text-white h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                  <HiOutlinePencilAlt className="text-white h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                 </span>
                 <p className="text-md text-gray-700 dark:text-gray-50 ml-2 font-medium">
                   Blogs

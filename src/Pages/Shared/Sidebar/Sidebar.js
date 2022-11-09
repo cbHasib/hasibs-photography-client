@@ -4,19 +4,17 @@ import {
   HiOutlineChartPie,
   HiOutlineLogout,
   HiOutlineStar,
+  HiOutlineViewGridAdd,
   HiPencilAlt,
+  HiOutlineInboxIn,
 } from "react-icons/hi";
-import {
-  HiOutlineInboxArrowDown,
-  HiOutlineWrenchScrewdriver,
-} from "react-icons/hi2";
 import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <aside class="lg:w-64 px-7 lg:px-0 h-full" aria-label="Sidebar">
-      <div class="overflow-y-auto py-4 px-3 bg-gray-50 h-full dark:bg-gray-800">
-        <ul class="space-y-2">
+    <aside className="lg:w-64 px-7 lg:px-0 h-full" aria-label="Sidebar">
+      <div className="overflow-y-auto py-4 px-3 bg-gray-50 h-full dark:bg-gray-800">
+        <ul className="space-y-2">
           <li>
             <NavLink
               to="/admin/dashboard"
@@ -28,9 +26,9 @@ const Sidebar = () => {
             >
               <HiOutlineChartPie
                 aria-hidden="true"
-                class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
               />
-              <span class="ml-3">Dashboard</span>
+              <span className="ml-3">Dashboard</span>
             </NavLink>
           </li>
 
@@ -43,13 +41,13 @@ const Sidebar = () => {
                   : "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               }
             >
-              <HiOutlineWrenchScrewdriver
+              <HiOutlineViewGridAdd
                 aria-hidden="true"
-                class="w-6 h-6 text-gray-500 transition
+                className="w-6 h-6 text-gray-500 transition
               duration-75 dark:text-gray-400 group-hover:text-gray-900
               dark:group-hover:text-white"
               />
-              <span class="ml-3">Services</span>
+              <span className="ml-3">Services</span>
             </NavLink>
           </li>
 
@@ -64,11 +62,11 @@ const Sidebar = () => {
             >
               <HiOutlineStar
                 aria-hidden="true"
-                class="w-6 h-6 text-gray-500 transition
+                className="w-6 h-6 text-gray-500 transition
               duration-75 dark:text-gray-400 group-hover:text-gray-900
               dark:group-hover:text-white"
               />
-              <span class="ml-3">My Reviews</span>
+              <span className="ml-3">My Reviews</span>
             </NavLink>
           </li>
 
@@ -83,12 +81,12 @@ const Sidebar = () => {
             >
               <HiOutlineCamera
                 aria-hidden="true"
-                class="w-6 h-6 text-gray-500 transition
+                className="w-6 h-6 text-gray-500 transition
               duration-75 dark:text-gray-400 group-hover:text-gray-900
               dark:group-hover:text-white"
               />
-              <span class="flex-1 ml-3 whitespace-nowrap">Request</span>
-              <span class="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
+              <span className="flex-1 ml-3 whitespace-nowrap">Request</span>
+              <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
                 3
               </span>
             </NavLink>
@@ -103,14 +101,14 @@ const Sidebar = () => {
                   : "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               }
             >
-              <HiOutlineInboxArrowDown
+              <HiOutlineInboxIn
                 aria-hidden="true"
-                class="w-6 h-6 text-gray-500 transition
+                className="w-6 h-6 text-gray-500 transition
               duration-75 dark:text-gray-400 group-hover:text-gray-900
               dark:group-hover:text-white"
               />
-              <span class="flex-1 ml-3 whitespace-nowrap">Inbox</span>
-              <span class="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
+              <span className="flex-1 ml-3 whitespace-nowrap">Inbox</span>
+              <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
                 3
               </span>
             </NavLink>
@@ -127,15 +125,15 @@ const Sidebar = () => {
             >
               <HiPencilAlt
                 aria-hidden="true"
-                class="w-6 h-6 text-gray-500 transition
+                className="w-6 h-6 text-gray-500 transition
               duration-75 dark:text-gray-400 group-hover:text-gray-900
               dark:group-hover:text-white"
               />
-              <span class="flex-1 ml-3">Manage Blog</span>
+              <span className="flex-1 ml-3">Manage Blog</span>
             </NavLink>
           </li>
         </ul>
-        <ul class="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
+        <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
           <li>
             <button
               onClick={() => console.log("object")}
@@ -143,9 +141,9 @@ const Sidebar = () => {
             >
               <HiOutlineLogout
                 aria-hidden="true"
-                class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
               />
-              <span class="ml-3">Logout</span>
+              <span className="ml-3">Logout</span>
             </button>
           </li>
         </ul>

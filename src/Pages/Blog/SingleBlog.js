@@ -80,7 +80,7 @@ const SingleBlog = () => {
                 </div>
                 <div className="flex gap-2 items-center justify-end">
                   <div
-                    class="h-full flex mr-3 gap-2 items-center justify-center"
+                    className="h-full flex mr-3 gap-2 items-center justify-center"
                     title="Total Views"
                   >
                     <svg
