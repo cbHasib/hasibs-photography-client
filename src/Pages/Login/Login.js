@@ -9,7 +9,13 @@ import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { loginWithGoogle, loginWithGitHub, signIn } = useContext(AuthContext);
+  const {
+    loginWithGoogle,
+    loginWithGitHub,
+    signIn,
+    resetPassword,
+    setLoading,
+  } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -64,6 +70,22 @@ const Login = () => {
       })
       .catch((error) => {
         toast.error(error.message);
+      });
+  };
+
+  const handleResetPassword = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    resetPassword(email)
+      .then(() => {
+        toast.success("Reset email sent successfully. Check your inbox/spam.");
+        setLoading(false);
+      })
+      .catch(() => {
+        toast.error(
+          () => "Something went wrong. Check you email and try again."
+        );
+        setLoading(false);
       });
   };
 
@@ -162,7 +184,7 @@ const Login = () => {
               <h3 className="text-xl font-medium text-gray-900 dark:text-white">
                 Reset your password
               </h3>
-              <form action="#" autoComplete="off">
+              <form onSubmit={handleResetPassword}>
                 <div className="flex flex-col mb-2">
                   <div className="flex relative ">
                     <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
@@ -177,8 +199,9 @@ const Login = () => {
                       </svg>
                     </span>
                     <input
-                      type="text"
-                      id="sign-in-email"
+                      type="email"
+                      id="email"
+                      name="email"
                       className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                       placeholder="Your email"
                     />

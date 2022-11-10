@@ -8,7 +8,7 @@ const Footer = () => {
       <footer className="p-4 sm:p-6 max-w-7xl mx-auto">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-            <a href="https://flowbite.com/" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <img src={logo} className="mr-3 h-8" alt="FlowBite Logo" />
               <div className="flex flex-col gap-0">
                 <span className="text-2xl my-0 py-0 font-semibold dark:text-white">
@@ -18,7 +18,7 @@ const Footer = () => {
                   Photography
                 </span>
               </div>
-            </a>
+            </Link>
           </div>
           <div className="grid grid-cols-2 gap-10">
             <div>

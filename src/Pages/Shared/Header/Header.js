@@ -34,21 +34,23 @@ const Header = () => {
         className="px-5 sm:px-4 py-3 w-full max-w-7xl mx-auto z-20"
         fluid={true}
       >
-        <Navbar.Brand>
-          <img
-            src={logo}
-            className="mr-3 h-6 sm:h-9"
-            alt="Hasib's Photography Logo"
-          />
-          <div className="flex flex-col gap-0">
-            <span className="text-xl my-0 py-0 font-semibold dark:text-white">
-              Hasib's
-            </span>
-            <span className=" text-xs  dark:text-white -mt-1.5 py-0">
-              Photography
-            </span>
-          </div>
-        </Navbar.Brand>
+        <Link to="/">
+          <Navbar.Brand>
+            <img
+              src={logo}
+              className="mr-3 h-6 sm:h-9"
+              alt="Hasib's Photography Logo"
+            />
+            <div className="flex flex-col gap-0">
+              <span className="text-xl my-0 py-0 font-semibold dark:text-white">
+                Hasib's
+              </span>
+              <span className=" text-xs  dark:text-white -mt-1.5 py-0">
+                Photography
+              </span>
+            </div>
+          </Navbar.Brand>
+        </Link>
 
         <div className="flex md:order-2">
           <label className="swap swap-rotate mr-4">
@@ -96,9 +98,18 @@ const Header = () => {
                     {user?.email}
                   </span>
                 </Dropdown.Header>
-                <Dropdown.Item>
-                  <Link to="/admin">Dashboard</Link>
-                </Dropdown.Item>
+                <Link to="/admin">
+                  <Dropdown.Item>Dashboard</Dropdown.Item>
+                </Link>
+                <Link to="/admin/services">
+                  <Dropdown.Item>My Services</Dropdown.Item>
+                </Link>
+                <Link to="/admin/my-reviews">
+                  <Dropdown.Item>My Reviews</Dropdown.Item>
+                </Link>
+                <Link to="/admin/inbox">
+                  <Dropdown.Item>Inbox</Dropdown.Item>
+                </Link>
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
               </Dropdown>

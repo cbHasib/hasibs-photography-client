@@ -1,13 +1,23 @@
 import { Button, Rating } from "flowbite-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { useNavigate } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
-  const { _id, title, details, thumbnail, rating } = service;
+  const { _id, title, details, thumbnail } = service;
 
   const navigate = useNavigate();
+  const [rating, setRating] = useState(4);
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/average-rating/${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setRating(data.data);
+        }
+      });
+  }, [_id]);
 
   return (
     <div className="max-w-[380px] w-full bg-white rounded-md shadow-md dark:bg-slate-800 drop-shadow-2xl dark:text-gray-100 p-3 flex flex-col justify-between text-center hover:-translate-y-1 duration-300 relative">
@@ -32,12 +42,11 @@ const ServiceCard = ({ service }) => {
           </h2>
           <div className="flex justify-center items-center">
             <Rating>
-              {[...Array(5).keys()].map((number) => (
-                <Rating.Star
-                  key={number}
-                  filled={rating < number + 1 ? false : true}
-                />
-              ))}
+              <Rating.Star filled={rating >= 1 ? true : false} />
+              <Rating.Star filled={rating >= 2 ? true : false} />
+              <Rating.Star filled={rating >= 3 ? true : false} />
+              <Rating.Star filled={rating >= 4 ? true : false} />
+              <Rating.Star filled={rating === 5 ? true : false} />
             </Rating>
           </div>
         </div>

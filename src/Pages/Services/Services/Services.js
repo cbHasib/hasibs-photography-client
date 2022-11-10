@@ -31,7 +31,7 @@ const Services = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setServices(data.data);
+          setServices(data.data.reverse());
           setError("");
         } else {
           setError(data.error);

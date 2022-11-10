@@ -18,6 +18,7 @@ import slider3 from "../../../assets/images/banner/wedding.jpg";
 import slider4 from "../../../assets/images/banner/interior.jpg";
 import slider5 from "../../../assets/images/banner/industrial.jpg";
 import { Button } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
 
 const sliders = [
   {
@@ -58,6 +59,7 @@ const sliders = [
 ];
 
 const Banner = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <Swiper
@@ -85,8 +87,12 @@ const Banner = () => {
                 </h2>
                 <p className="my-7 lg:w-10/12">{slider.subtitle}</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-1 max-w-sm mx-auto lg:mx-0">
-                  <Button>My Services</Button>
-                  <Button color="dark">Contact Me</Button>
+                  <Button onClick={() => navigate("/services")}>
+                    My Services
+                  </Button>
+                  <Button color="dark" onClick={() => navigate("/contact")}>
+                    Contact Me
+                  </Button>
                 </div>
               </div>
             </div>
