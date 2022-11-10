@@ -1,6 +1,7 @@
 import { Button, Modal } from "flowbite-react";
 import React, { useState } from "react";
 import {
+  HiFolder,
   HiOutlineExclamationCircle,
   HiOutlineTrash,
   HiPencilAlt,
@@ -49,6 +50,9 @@ const MyReviewsItem = ({ review, setRefresh, refresh }) => {
                 {review?.reviewTime}
               </span>
             </div>
+          </div>
+          <div className="flex items-center space-x-2 text-yellow-500">
+            <HiFolder /> <span className="text-sm">{review?.serviceName}</span>
           </div>
           <div className="flex items-center space-x-2 text-yellow-500">
             <svg

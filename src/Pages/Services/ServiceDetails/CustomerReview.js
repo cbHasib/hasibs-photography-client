@@ -31,9 +31,9 @@ const CustomerReview = ({ totalAverage, serviceId }) => {
         setError(error.message);
       });
 
-    // API Look Like this: /reviews/636c5e9e4e36d84105413b5f?sort=desc&page=2&limit=1
+    // API Look Like this: /get-reviews/636c5e9e4e36d84105413b5f?sort=desc&page=2&limit=1
     fetch(
-      `${process.env.REACT_APP_SERVER_URL}/reviews/${serviceId}/?sort=desc&page=${page}&limit=${limit}`
+      `${process.env.REACT_APP_SERVER_URL}/get-reviews/${serviceId}/?sort=desc&page=${page}&limit=${limit}`
     )
       .then((res) => res.json())
       .then((data) => {
