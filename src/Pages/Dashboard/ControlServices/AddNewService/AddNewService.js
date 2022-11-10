@@ -45,6 +45,7 @@ const AddNewService = () => {
       details,
       thumbnail,
       gallery: images,
+      rating: 0,
     };
 
     console.log(newData);
