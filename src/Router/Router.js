@@ -9,6 +9,8 @@ import AddNewBlogCategory from "../Pages/Dashboard/BlogControl/BlogCategory/AddN
 import UpdateBlogCategory from "../Pages/Dashboard/BlogControl/BlogCategory/UpdateBlogCategory";
 import ManageBlog from "../Pages/Dashboard/BlogControl/ManageBlog/ManageBlog";
 import UpdateBlog from "../Pages/Dashboard/BlogControl/UpdateBlog/UpdateBlog";
+import BookingRequest from "../Pages/Dashboard/BookingRequest/BookingRequest";
+import ViewBook from "../Pages/Dashboard/BookingRequest/ViewBook";
 import AddNewService from "../Pages/Dashboard/ControlServices/AddNewService/AddNewService";
 import EditService from "../Pages/Dashboard/ControlServices/EditService/EditService";
 import ServicesControl from "../Pages/Dashboard/ControlServices/Services/ServicesControl";
@@ -105,6 +107,14 @@ export const Router = createBrowserRouter([
       {
         path: "/admin/inbox/view/:id",
         element: <ViewMail />,
+      },
+      {
+        path: "/admin/request",
+        element: <BookingRequest />,
+      },
+      {
+        path: "/admin/request/view/:id",
+        element: <ViewBook />,
       },
       {
         path: "/admin/blogs",

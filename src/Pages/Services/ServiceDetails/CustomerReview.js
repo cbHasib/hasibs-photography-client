@@ -2,7 +2,7 @@ import { Pagination } from "flowbite-react";
 import React from "react";
 import CustomerReviewItem from "./CustomerReviewItem";
 
-const CustomerReview = ({ reviewsCount }) => {
+const CustomerReview = ({ rating }) => {
   const onPageChange = (page) => {
     console.log(page);
   };
@@ -10,7 +10,7 @@ const CustomerReview = ({ reviewsCount }) => {
     <div>
       <h2 className="text-2xl font-bold mt-5 mb-3 dark:text-white/80">
         Customer Reviews (Overall:
-        <span className="text-yellow-500"> {reviewsCount}</span>)
+        <span className="text-yellow-500"> {rating}</span>)
       </h2>
 
       <div>

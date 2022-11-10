@@ -17,14 +17,12 @@ import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 import ErrorMessage from "../../Shared/ErrorMessage/ErrorMessage";
 import useScrollToTop from "../../../hooks/useScrollToTop";
 import useTitle from "../../../hooks/useTitle";
+import { toast } from "react-toastify";
 
 const ServiceDetails = () => {
   useScrollToTop();
   const { user } = useContext(AuthContext);
-  const { register, handleSubmit } = useForm();
-  const [reviewsCount, setReviewsCount] = useState(0);
-  const [limit, setLimit] = useState(6);
-  const [page, setPage] = useState(1);
+  const { register, handleSubmit, reset } = useForm();
   const [error, setError] = useState(null);
   const [load, setLoad] = useState(false);
 
@@ -34,6 +32,8 @@ const ServiceDetails = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    setLoad(true);
+
     fetch(`${process.env.REACT_APP_SERVER_URL}/service/${id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -56,7 +56,44 @@ const ServiceDetails = () => {
     data["serviceId"] = _id;
     data["serviceTitle"] = title;
 
-    console.log(data);
+    const id = toast.loading("Please wait booking email sending...");
+
+    // Send data to server
+    fetch(`${process.env.REACT_APP_serverURL}/booking-form`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          toast.update(id, {
+            render: data.message,
+            type: "success",
+            autoClose: true,
+            isLoading: false,
+          });
+
+          reset();
+        } else {
+          toast.update(id, {
+            render: data.error,
+            type: "error",
+            isLoading: false,
+            autoClose: true,
+          });
+        }
+      })
+      .catch((err) => {
+        toast.update(id, {
+          render: err.message,
+          type: "error",
+          isLoading: false,
+          autoClose: true,
+        });
+      });
   };
 
   return (
@@ -141,7 +178,7 @@ const ServiceDetails = () => {
                 </PhotoProvider>
 
                 <div className="mt-16">
-                  <CustomerReview reviewsCount={reviewsCount} />
+                  <CustomerReview rating={rating} />
                 </div>
                 <div className="mt-16">
                   {user ? <AddReview /> : <UserRequired />}
@@ -206,7 +243,7 @@ const ServiceDetails = () => {
                         </span>
                         <input
                           type="date"
-                          {...register("date")}
+                          {...register("eventDate")}
                           id="date"
                           className="rounded-r-lg flex-1 appearance-none border border-gray-300 dark:border-gray-700 w-full py-2 px-4 bg-white dark:bg-slate-900 text-gray-700 placeholder-gray-400 shadow-sm text-base dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                           placeholder="Your Event Date"
