@@ -2,7 +2,7 @@ import { Avatar, Table } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
 
 const ShowServices = () => {
   const [load, setLoad] = useState(true);
@@ -11,7 +11,7 @@ const ShowServices = () => {
 
   useEffect(() => {
     setLoad(true);
-    fetch(`${process.env.REACT_APP_SERVER_URL}/courses`)
+    fetch(`${process.env.REACT_APP_SERVER_URL}/services`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -19,10 +19,12 @@ const ShowServices = () => {
           setLoad(false);
         } else {
           toast.error(data.error);
+          setLoad(false);
         }
       })
       .catch((error) => {
         toast.error(error.message);
+        setLoad(false);
       });
   }, [refresh]);
 
