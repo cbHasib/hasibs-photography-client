@@ -1,7 +1,7 @@
 import { Modal } from "flowbite-react";
 import React, { useContext, useState } from "react";
 import { FaEnvelope, FaGithub, FaGoogle, FaUnlock } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/UserContext";
 import useScrollToTop from "../../hooks/useScrollToTop";
@@ -10,6 +10,11 @@ import useTitle from "../../hooks/useTitle";
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { loginWithGoogle, loginWithGitHub, signIn } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+
   const showModal = () => {
     setIsOpen(true);
   };
@@ -28,6 +33,7 @@ const Login = () => {
       signIn(email, password)
         .then((result) => {
           toast.success("Login Successful");
+          navigate(from, { replace: true });
           e.target.reset();
         })
         .catch((error) => {
@@ -41,6 +47,8 @@ const Login = () => {
   const handleGoogleLogin = () => {
     loginWithGoogle()
       .then((result) => {
+        navigate(from, { replace: true });
+
         toast.success(`Welcome ${result.user.displayName}`);
       })
       .catch((error) => {
@@ -51,6 +59,7 @@ const Login = () => {
   const handleGithubLogin = () => {
     loginWithGitHub()
       .then((result) => {
+        navigate(from, { replace: true });
         toast.success(`Welcome ${result.user.displayName}`);
       })
       .catch((error) => {

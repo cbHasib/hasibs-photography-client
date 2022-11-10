@@ -8,7 +8,7 @@ import {
   FaUnlock,
   FaUser,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/UserContext";
 import useScrollToTop from "../../hooks/useScrollToTop";
@@ -17,6 +17,10 @@ import useTitle from "../../hooks/useTitle";
 const Register = () => {
   useScrollToTop();
   useTitle("Register");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
 
   const { loginWithGoogle, loginWithGitHub, register, setLoading } =
     useContext(AuthContext);
@@ -43,6 +47,7 @@ const Register = () => {
           photoURL: photoURL,
         })
           .then(() => {
+            navigate(from, { replace: true });
             toast.info("Profile Updated");
           })
           .catch((error) => {
@@ -59,6 +64,7 @@ const Register = () => {
     loginWithGoogle()
       .then((result) => {
         toast.success(`Welcome ${result.user.displayName}`);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         toast.error(error.message);
@@ -68,6 +74,7 @@ const Register = () => {
   const handleGithubLogin = () => {
     loginWithGitHub()
       .then((result) => {
+        navigate(from, { replace: true });
         toast.success(`Welcome ${result.user.displayName}`);
       })
       .catch((error) => {
