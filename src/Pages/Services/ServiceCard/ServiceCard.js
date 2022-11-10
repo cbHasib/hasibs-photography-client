@@ -3,10 +3,8 @@ import React from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 
-const ServiceCard = () => {
-  const imgURL = "https://flowbite.com/docs/images/blog/image-1.jpg";
-  const serviceDetails =
-    "Full preparation guide on HSC Physics 1st Paper Syllabus. Ensure maximum preparation in the shortest possible time. Enroll now and secure an A+ in HSC Physics 1st Paper.";
+const ServiceCard = ({ service }) => {
+  const { _id, title, details, thumbnail, rating } = service;
   return (
     <div className="max-w-[380px] w-full bg-white rounded-md shadow-md dark:bg-slate-800 drop-shadow-2xl dark:text-gray-100 p-3 flex flex-col justify-between text-center hover:-translate-y-1 duration-300 relative">
       <div className="bg-orange-500 text-white p-1.5 rounded-full absolute top-1 right-1">
@@ -15,10 +13,10 @@ const ServiceCard = () => {
       </div>
       <div>
         <PhotoProvider>
-          <PhotoView src={imgURL}>
+          <PhotoView src={thumbnail}>
             <img
-              src={imgURL}
-              alt=""
+              src={thumbnail}
+              alt={title}
               className="object-cover object-center w-full rounded-lg h-48 dark:bg-gray-500"
             />
           </PhotoView>
@@ -26,24 +24,22 @@ const ServiceCard = () => {
 
         <div className="px-3 py-2 space-y-3">
           <h2 className="text-xl font-semibold tracking-wide text-ellipsis ">
-            {"Wedding Photography"}
+            {title}
           </h2>
           <div className="flex justify-center items-center">
             <Rating>
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star filled={false} />
+              {[...Array(5).keys()].map((number) => (
+                <Rating.Star filled={rating < number + 1 ? false : true} />
+              ))}
             </Rating>
           </div>
         </div>
-        <p className="">{serviceDetails.slice(0, 100) + "..."}</p>
+        <p className="">{details.slice(0, 100) + "..."}</p>
       </div>
 
       <div className="px-3 py-2 space-y-3">
         <Button
-          to={`/courses/`}
+          to={`/courses/${_id}`}
           type="button"
           className="bg-blue-600 w-full p-0 m-0 min-h-[1rem] max-h-10"
         >
