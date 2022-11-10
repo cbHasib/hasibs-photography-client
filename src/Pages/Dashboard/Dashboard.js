@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   HiOutlineStar,
   HiOutlineViewGridAdd,
@@ -12,14 +12,93 @@ import LoadingSpinner from "../Shared/LoadingSpinner/LoadingSpinner";
 
 const Dashboard = () => {
   const [serviceCount, setServiceCount] = useState(0);
-  const [videoCount, setVideoCount] = useState(0);
-  const [instructorCount, setInstructorCount] = useState(0);
+  const [requestCount, setRequestCount] = useState(0);
+  const [messageCount, setMessageCount] = useState(0);
   const [reviewsCount, setReviewsCount] = useState(0);
   const [blogCount, setBlogCount] = useState(0);
   const [error, setError] = useState("");
   const [load, setLoad] = useState(false);
   useScrollToTop();
   useTitle("Dashboard");
+
+  useEffect(() => {
+    setLoad(false);
+
+    fetch(`${process.env.REACT_APP_SERVER_URL}/service-count`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setServiceCount(data.data);
+          setError("");
+        } else {
+          setError(data.error);
+        }
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+
+    fetch(`${process.env.REACT_APP_SERVER_URL}/booking-count`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setRequestCount(data.data);
+          setError("");
+        } else {
+          setError(data.error);
+        }
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+
+    fetch(`${process.env.REACT_APP_SERVER_URL}/message-count`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setMessageCount(data.data);
+          setError("");
+        } else {
+          setError(data.error);
+        }
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+
+    fetch(`${process.env.REACT_APP_SERVER_URL}/blog-count`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setBlogCount(data.data);
+          setError("");
+        } else {
+          setError(data.error);
+        }
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  }, []);
+
+  /*      
+    fetch(`${process.env.REACT_APP_SERVER_URL}/review-count`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setReviewsCount(data.data);
+          setError("");
+        } else {
+          setError(data.error);
+        }
+        setLoad(false);
+      })
+      .catch((error) => {
+        setLoad(false);
+        setError(error.message);
+      });
+ */
+
   return (
     <>
       {load ? (
@@ -68,12 +147,12 @@ const Dashboard = () => {
               <div className="flex flex-col justify-start">
                 <p
                   className={
-                    videoCount
+                    requestCount
                       ? "text-gray-800 text-4xl text-left dark:text-white font-bold my-4"
                       : "h-11 bg-gray-200 rounded dark:bg-gray-700 w-15 mb-4 animate-pulse my-4"
                   }
                 >
-                  {videoCount ? videoCount : null}
+                  {requestCount ? requestCount : null}
                 </p>
                 <div className="relative w-full h-2 bg-gray-200 rounded">
                   <div className="absolute top-0 h-2  left-0 rounded bg-green-500 w-full"></div>
@@ -94,12 +173,12 @@ const Dashboard = () => {
               <div className="flex flex-col justify-start">
                 <p
                   className={
-                    instructorCount
+                    reviewsCount
                       ? "text-gray-800 text-4xl text-left dark:text-white font-bold my-4"
                       : "h-11 bg-gray-200 rounded dark:bg-gray-700 w-15 mb-4 animate-pulse my-4"
                   }
                 >
-                  {instructorCount ? instructorCount : null}
+                  {reviewsCount ? reviewsCount : null}
                 </p>
                 <div className="relative w-full h-2 bg-gray-200 rounded">
                   <div className="absolute top-0 h-2  left-0 rounded bg-green-500 w-full"></div>
@@ -120,12 +199,12 @@ const Dashboard = () => {
               <div className="flex flex-col justify-start">
                 <p
                   className={
-                    instructorCount
+                    messageCount
                       ? "text-gray-800 text-4xl text-left dark:text-white font-bold my-4"
                       : "h-11 bg-gray-200 rounded dark:bg-gray-700 w-15 mb-4 animate-pulse my-4"
                   }
                 >
-                  {instructorCount ? instructorCount : null}
+                  {messageCount ? messageCount : null}
                 </p>
                 <div className="relative w-full h-2 bg-gray-200 rounded">
                   <div className="absolute top-0 h-2  left-0 rounded bg-green-500 w-full"></div>
