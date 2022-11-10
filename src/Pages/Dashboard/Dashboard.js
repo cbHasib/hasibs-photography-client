@@ -79,9 +79,7 @@ const Dashboard = () => {
       .catch((error) => {
         setError(error.message);
       });
-  }, []);
 
-  /*      
     fetch(`${process.env.REACT_APP_SERVER_URL}/review-count`)
       .then((res) => res.json())
       .then((data) => {
@@ -97,7 +95,7 @@ const Dashboard = () => {
         setLoad(false);
         setError(error.message);
       });
- */
+  }, []);
 
   return (
     <>

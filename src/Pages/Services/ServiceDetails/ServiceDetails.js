@@ -191,7 +191,7 @@ const ServiceDetails = () => {
                 </PhotoProvider>
 
                 <div className="mt-16">
-                  <CustomerReview totalAverage={totalAverage} />
+                  <CustomerReview totalAverage={totalAverage} serviceId={id} />
                 </div>
                 <div className="mt-16">
                   {user ? (
