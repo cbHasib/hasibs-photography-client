@@ -25,14 +25,27 @@ const ServiceDetails = () => {
   const { register, handleSubmit, reset } = useForm();
   const [error, setError] = useState(null);
   const [load, setLoad] = useState(false);
-
+  const [totalAverage, setTotalAverage] = useState(0);
   const [service, setService] = useState({});
-  const { _id, title, details, price, thumbnail, rating, gallery } = service;
+  const { _id, title, details, price, thumbnail, gallery } = service;
 
   const { id } = useParams();
 
   useEffect(() => {
     setLoad(true);
+
+    fetch(`${process.env.REACT_APP_SERVER_URL}/average-rating/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setTotalAverage(data.data);
+        } else {
+          setError(data.error);
+        }
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
 
     fetch(`${process.env.REACT_APP_SERVER_URL}/service/${id}`)
       .then((res) => res.json())
@@ -178,7 +191,7 @@ const ServiceDetails = () => {
                 </PhotoProvider>
 
                 <div className="mt-16">
-                  <CustomerReview rating={rating} />
+                  <CustomerReview totalAverage={totalAverage} />
                 </div>
                 <div className="mt-16">
                   {user ? (
