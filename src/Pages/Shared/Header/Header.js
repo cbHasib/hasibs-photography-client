@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Header.css";
 import logo from "../../../assets/images/logo.png";
 import { AuthContext } from "../../../Context/UserContext";
-import { useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [dark, setDark] = useState(false);
@@ -96,9 +96,9 @@ const Header = () => {
                     {user?.email}
                   </span>
                 </Dropdown.Header>
-                <Dropdown.Item>Dashboard</Dropdown.Item>
-                <Dropdown.Item>Settings</Dropdown.Item>
-                <Dropdown.Item>Earnings</Dropdown.Item>
+                <Dropdown.Item>
+                  <Link to="/admin">Dashboard</Link>
+                </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
               </Dropdown>
@@ -121,13 +121,49 @@ const Header = () => {
         </div>
 
         <Navbar.Collapse>
-          <Navbar.Link href="/navbars" active={true}>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? "block py-2 pr-4 pl-3 md:p-0 border-b border-gray-100 text-blue-700 dark:text-white/90 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                : "block py-2 pr-4 pl-3 md:p-0 border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+            }
+          >
             Home
-          </Navbar.Link>
-          <Navbar.Link href="/navbars">About</Navbar.Link>
-          <Navbar.Link href="/navbars">Services</Navbar.Link>
-          <Navbar.Link href="/navbars">Pricing</Navbar.Link>
-          <Navbar.Link onClick={() => navigate("/login")}>Contact</Navbar.Link>
+          </NavLink>
+
+          <NavLink
+            to="/services"
+            className={({ isActive }) =>
+              isActive
+                ? "block py-2 pr-4 pl-3 md:p-0 border-b border-gray-100 text-blue-700 dark:text-white/90 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                : "block py-2 pr-4 pl-3 md:p-0 border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+            }
+          >
+            Services
+          </NavLink>
+
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? "block py-2 pr-4 pl-3 md:p-0 border-b border-gray-100 text-blue-700 dark:text-white/90 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                : "block py-2 pr-4 pl-3 md:p-0 border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+            }
+          >
+            About
+          </NavLink>
+
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive
+                ? "block py-2 pr-4 pl-3 md:p-0 border-b border-gray-100 text-blue-700 dark:text-white/90 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                : "block py-2 pr-4 pl-3 md:p-0 border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+            }
+          >
+            Contact
+          </NavLink>
         </Navbar.Collapse>
       </Navbar>
     </header>
