@@ -47,6 +47,7 @@ const Login = () => {
         });
     } catch (error) {
       toast.error(error.message);
+      setLoading(false);
     }
   };
 
@@ -54,11 +55,11 @@ const Login = () => {
     loginWithGoogle()
       .then((result) => {
         navigate(from, { replace: true });
-
         toast.success(`Welcome ${result.user.displayName}`);
       })
       .catch((error) => {
         toast.error(error.message);
+        setLoading(false);
       });
   };
 
@@ -70,6 +71,7 @@ const Login = () => {
       })
       .catch((error) => {
         toast.error(error.message);
+        setLoading(false);
       });
   };
 
@@ -82,9 +84,7 @@ const Login = () => {
         setLoading(false);
       })
       .catch(() => {
-        toast.error(
-          () => "Something went wrong. Check you email and try again."
-        );
+        toast.error("Something went wrong. Check you email and try again.");
         setLoading(false);
       });
   };
