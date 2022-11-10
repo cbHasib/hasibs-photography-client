@@ -1,4 +1,5 @@
 import DashboardLayout from "../Layout/DashboardLayout";
+import About from "../Pages/About/About";
 import Blog from "../Pages/Blog/Blog";
 import SingleBlog from "../Pages/Blog/SingleBlog";
 import Contact from "../Pages/Contact/Contact";
@@ -19,11 +20,11 @@ import Inbox from "../Pages/Dashboard/Inbox/Inbox";
 import ViewMail from "../Pages/Dashboard/Inbox/ViewMail";
 import MyReviews from "../Pages/Dashboard/MyReviews/MyReviews";
 import UpdateMyReview from "../Pages/Dashboard/MyReviews/UpdateMyReview";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ServiceDetails from "../Pages/Services/ServiceDetails/ServiceDetails";
 import Services from "../Pages/Services/Services/Services";
-import Test from "../Pages/Shared/Test/Test";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: MainLayout } = require("../Layout/MainLayout");
@@ -37,6 +38,10 @@ export const Router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/login",
@@ -65,10 +70,6 @@ export const Router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
-      },
-      {
-        path: "/test",
-        element: <Test />,
       },
     ],
   },
@@ -150,5 +151,9 @@ export const Router = createBrowserRouter([
         element: <UpdateBlogCategory />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
   },
 ]);

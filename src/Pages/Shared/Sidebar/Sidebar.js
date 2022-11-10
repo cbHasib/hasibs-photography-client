@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   HiOutlineCamera,
   HiOutlineChartPie,
@@ -9,8 +9,10 @@ import {
   HiOutlineInboxIn,
 } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Context/UserContext";
 
 const Sidebar = () => {
+  const { logout } = useContext(AuthContext);
   return (
     <aside className="lg:w-64 px-7 lg:px-0 h-full" aria-label="Sidebar">
       <div className="overflow-y-auto py-4 px-3 bg-gray-50 h-full dark:bg-gray-800">
@@ -85,10 +87,7 @@ const Sidebar = () => {
               duration-75 dark:text-gray-400 group-hover:text-gray-900
               dark:group-hover:text-white"
               />
-              <span className="flex-1 ml-3 whitespace-nowrap">Request</span>
-              <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
-                3
-              </span>
+              <span className="ml-3">Event Request</span>
             </NavLink>
           </li>
 
@@ -107,10 +106,7 @@ const Sidebar = () => {
               duration-75 dark:text-gray-400 group-hover:text-gray-900
               dark:group-hover:text-white"
               />
-              <span className="flex-1 ml-3 whitespace-nowrap">Inbox</span>
-              <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
-                3
-              </span>
+              <span className="ml-3">Inbox</span>
             </NavLink>
           </li>
 
@@ -136,7 +132,7 @@ const Sidebar = () => {
         <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
           <li>
             <button
-              onClick={() => console.log("object")}
+              onClick={logout}
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 w-full"
             >
               <HiOutlineLogout

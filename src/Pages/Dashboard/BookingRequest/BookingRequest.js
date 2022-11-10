@@ -55,6 +55,9 @@ const BookingRequest = () => {
       .catch((error) => toast.error(error.message));
   };
 
+  useScrollToTop();
+  useTitle("Event Booking Request");
+
   return (
     <>
       {load ? (

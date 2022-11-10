@@ -1,9 +1,13 @@
 import { Button } from "flowbite-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import useScrollToTop from "../../../../hooks/useScrollToTop";
+import useTitle from "../../../../hooks/useTitle";
 import BlogList from "../BlogList/BlogList";
 
 const ManageBlog = () => {
+  useScrollToTop();
+  useTitle("Manage Blog");
   return (
     <>
       <div className="w-[80%] mx-auto flex flex-col justify-center items-center pt-5 pb-10 gap-10">
