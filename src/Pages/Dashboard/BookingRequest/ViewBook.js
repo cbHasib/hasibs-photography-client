@@ -40,7 +40,7 @@ const ViewBook = () => {
       });
   }, [id]);
 
-  useTitle(booking?.subject || error || "Blog");
+  useTitle(booking?.subject || error || "Request Details");
 
   return (
     <div>

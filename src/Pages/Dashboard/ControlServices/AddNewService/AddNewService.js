@@ -2,6 +2,8 @@ import { Button, Label, Textarea, TextInput } from "flowbite-react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import useScrollToTop from "../../../../hooks/useScrollToTop";
+import useTitle from "../../../../hooks/useTitle";
 import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
 import "./AddNewService.css";
 
@@ -74,6 +76,9 @@ const AddNewService = () => {
         toast.error(error.message);
       });
   };
+
+  useTitle("Add New Service");
+  useScrollToTop();
 
   return (
     <>

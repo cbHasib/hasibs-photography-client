@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import useScrollToTop from "../../../../hooks/useScrollToTop";
 import useTitle from "../../../../hooks/useTitle";
 import ErrorMessage from "../../../Shared/ErrorMessage/ErrorMessage";
 import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
@@ -105,6 +106,7 @@ const EditService = () => {
   }, [refresh, id]);
 
   useTitle(service.title || error || "Update Service");
+  useScrollToTop();
 
   return (
     <>

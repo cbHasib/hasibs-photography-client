@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
 import { toast } from "react-toastify";
+import useTitle from "../../../../hooks/useTitle";
+import useScrollToTop from "../../../../hooks/useScrollToTop";
 
 const AddNewBlogAuthor = () => {
   const [load, setLoad] = useState(true);
@@ -80,6 +82,9 @@ const AddNewBlogAuthor = () => {
         .catch((error) => toast.error(error.message));
     }
   };
+
+  useTitle("Add New Blog Author");
+  useScrollToTop();
 
   return (
     <>

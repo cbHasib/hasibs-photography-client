@@ -2,6 +2,8 @@ import { Button, Label, Select, Textarea, TextInput } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import useScrollToTop from "../../../../hooks/useScrollToTop";
+import useTitle from "../../../../hooks/useTitle";
 import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
 
 const AddNewBlog = () => {
@@ -15,6 +17,9 @@ const AddNewBlog = () => {
   const [blogTitle, setBlogTitle] = useState("");
 
   const [slugMake, setSlugMake] = useState("");
+
+  useTitle("Add New Blog");
+  useScrollToTop();
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_SERVER_URL}/authors`)

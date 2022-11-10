@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import useScrollToTop from "../../../../hooks/useScrollToTop";
+import useTitle from "../../../../hooks/useTitle";
 import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
 
 const UpdateBlog = () => {
@@ -108,6 +110,8 @@ const UpdateBlog = () => {
         setLoad(false);
       });
   };
+  useTitle(blog?.title + " - Update Blog");
+  useScrollToTop();
 
   return (
     <>

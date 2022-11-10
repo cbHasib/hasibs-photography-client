@@ -34,7 +34,7 @@ const ViewMail = () => {
       });
   }, [id]);
 
-  useTitle(mail?.subject || error || "Blog");
+  useTitle(mail?.subject || error || "View Mail");
 
   return (
     <div>

@@ -2,6 +2,8 @@ import { Rating } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import useScrollToTop from "../../../hooks/useScrollToTop";
+import useTitle from "../../../hooks/useTitle";
 import ErrorMessage from "../../Shared/ErrorMessage/ErrorMessage";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 
@@ -58,6 +60,8 @@ const UpdateMyReview = () => {
       })
       .catch((error) => toast.error(error.message));
   };
+  useTitle("Update Review");
+  useScrollToTop();
 
   return (
     <>

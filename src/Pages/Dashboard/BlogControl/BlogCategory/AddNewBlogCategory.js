@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import useScrollToTop from "../../../../hooks/useScrollToTop";
+import useTitle from "../../../../hooks/useTitle";
 import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
 
 const AddNewBlogCategory = () => {
@@ -11,6 +13,9 @@ const AddNewBlogCategory = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const [categories, setCategories] = useState([]);
+
+  useTitle("Add New Blog Category");
+  useScrollToTop();
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_SERVER_URL}/blog-categories`)

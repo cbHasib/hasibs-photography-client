@@ -2,12 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import useScrollToTop from "../../../../hooks/useScrollToTop";
+import useTitle from "../../../../hooks/useTitle";
 import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
 
 const UpdateBlogCategory = () => {
   const [load, setLoad] = useState(true);
   const [refresh, setRefresh] = useState(false);
   const { register, handleSubmit, reset } = useForm();
+
+  useTitle("Update Blog Category");
+  useScrollToTop();
 
   const id = useParams().id;
 
