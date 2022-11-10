@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { FaEnvelope, FaInfo, FaPen, FaUser } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import useTitle from "../../../hooks/useTitle";
+import ErrorMessage from "../../Shared/ErrorMessage/ErrorMessage";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 
 const ViewMail = () => {
   const [mail, setMail] = useState({});
   const [load, setLoad] = useState(true);
+  const [error, setError] = useState("");
   const { id } = useParams();
 
   useEffect(() => {
@@ -15,23 +18,30 @@ const ViewMail = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          setError("");
           setMail(data.data);
           setLoad(false);
         } else {
+          setError(data.error);
           toast.error(data.error);
           setLoad(false);
         }
       })
       .catch((error) => {
+        setError(error.message);
         toast.error(error.message);
         setLoad(false);
       });
   }, [id]);
 
+  useTitle(mail?.subject || error || "Blog");
+
   return (
     <div>
       {load ? (
         <LoadingSpinner />
+      ) : error ? (
+        <ErrorMessage error={error} />
       ) : (
         <div>
           <form className="max-w-xl mx-auto">

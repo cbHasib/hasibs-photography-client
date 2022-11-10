@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import useScrollToTop from "../../../hooks/useScrollToTop";
+import useTitle from "../../../hooks/useTitle";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 
 const Inbox = () => {
@@ -11,6 +13,8 @@ const Inbox = () => {
   const [contacts, setContacts] = useState([]);
   const [show, setShow] = useState(false);
   const [id, setId] = useState("");
+  useTitle("Inbox");
+  useScrollToTop();
 
   useEffect(() => {
     setLoad(true);

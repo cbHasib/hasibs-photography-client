@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import useTitle from "../../../../hooks/useTitle";
+import ErrorMessage from "../../../Shared/ErrorMessage/ErrorMessage";
 import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
 import "./EditService.css";
 
@@ -12,6 +14,7 @@ const EditService = () => {
   const [refresh, setRefresh] = useState(false);
   const [images, setImages] = useState([]);
   const [service, setService] = useState({});
+  const [error, setError] = useState("");
 
   const id = useParams().id;
 
@@ -84,9 +87,11 @@ const EditService = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
+          setError("");
           setService(data.data);
           setImages(data.data.gallery);
         } else {
+          setError(data.error);
           toast.error(data.error);
         }
         setLoad(false);
@@ -94,14 +99,19 @@ const EditService = () => {
 
       .catch((error) => {
         setLoad(false);
+        setError(error.message);
         toast.error(error.message);
       });
   }, [refresh, id]);
+
+  useTitle(service.title || error || "Update Service");
 
   return (
     <>
       {load ? (
         <LoadingSpinner />
+      ) : error ? (
+        <ErrorMessage error={error} />
       ) : (
         <div className="lg:py-10 lg:px-20 mx-auto">
           <form

@@ -5,6 +5,8 @@ import {
   HiOutlineInboxIn,
 } from "react-icons/hi";
 import { HiOutlinePencilAlt } from "react-icons/hi";
+import useScrollToTop from "../../hooks/useScrollToTop";
+import useTitle from "../../hooks/useTitle";
 import ErrorMessage from "../Shared/ErrorMessage/ErrorMessage";
 import LoadingSpinner from "../Shared/LoadingSpinner/LoadingSpinner";
 
@@ -16,6 +18,8 @@ const Dashboard = () => {
   const [blogCount, setBlogCount] = useState(0);
   const [error, setError] = useState("");
   const [load, setLoad] = useState(false);
+  useScrollToTop();
+  useTitle("Dashboard");
   return (
     <>
       {load ? (

@@ -33,7 +33,10 @@ const ServiceCard = ({ service }) => {
           <div className="flex justify-center items-center">
             <Rating>
               {[...Array(5).keys()].map((number) => (
-                <Rating.Star filled={rating < number + 1 ? false : true} />
+                <Rating.Star
+                  key={number}
+                  filled={rating < number + 1 ? false : true}
+                />
               ))}
             </Rating>
           </div>
