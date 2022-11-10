@@ -15,7 +15,7 @@ const HomeService = () => {
       .then((data) => {
         if (data.success) {
           setError("");
-          setServices(data.data.reverse());
+          setServices(data.data);
         } else {
           setError(data.error);
         }

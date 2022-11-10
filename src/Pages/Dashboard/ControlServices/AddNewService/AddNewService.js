@@ -35,7 +35,7 @@ const AddNewService = () => {
     e.preventDefault();
     setLoad(true);
     const title = e.target.title.value;
-    const price = e.target.price.value;
+    const price = Number(e.target.price.value);
     const details = e.target.details.value;
     const thumbnail = e.target.thumbnail.value;
 
