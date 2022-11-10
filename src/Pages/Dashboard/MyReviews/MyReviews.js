@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../../Context/UserContext";
 import useScrollToTop from "../../../hooks/useScrollToTop";
 import useTitle from "../../../hooks/useTitle";
@@ -12,7 +13,7 @@ const MyReviews = () => {
   const [refresh, setRefresh] = useState(false);
   const [myReviews, setMyReviews] = useState([]);
 
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
   useEffect(() => {
     if (user?.uid) {
@@ -21,8 +22,18 @@ const MyReviews = () => {
       // /my-review?uid=${uid}
       // or can be /my-review?uid=${uid}&limit=2&page=1
 
-      fetch(`${process.env.REACT_APP_SERVER_URL}/my-reviews?uid=${user.uid}`)
-        .then((res) => res.json())
+      fetch(`${process.env.REACT_APP_SERVER_URL}/my-reviews?uid=${user.uid}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+        .then((res) => {
+          if (res.status === 401 || res.status === 403) {
+            toast.warning("You don't have permission to access this page");
+            return logout();
+          }
+          return res.json();
+        })
         .then((data) => {
           if (data.success) {
             setMyReviews(data.data);
@@ -37,7 +48,7 @@ const MyReviews = () => {
           setError(error.message);
         });
     }
-  }, [user, refresh]);
+  }, [user, refresh, logout]);
 
   useScrollToTop();
   useTitle("My Reviews");

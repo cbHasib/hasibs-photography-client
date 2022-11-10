@@ -181,7 +181,7 @@ const ServiceDetails = () => {
                           <img
                             src={item}
                             alt=""
-                            className="w-[120px] h-[120px] object-cover hover:cursor-pointer rounded-md"
+                            className="w-[120px] h-[120px] object-cover rounded-md"
                           />
                           <div className="absolute inset-0 duration-300 hover:bg-blue-800 hover:bg-opacity-50 rounded-md"></div>
                         </figure>

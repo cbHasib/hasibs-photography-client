@@ -5,7 +5,7 @@ import "react-photo-view/dist/react-photo-view.css";
 import { useNavigate } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
-  const { _id, title, details, thumbnail } = service;
+  const { _id, title, details, thumbnail, price } = service;
 
   const navigate = useNavigate();
   const [rating, setRating] = useState(4);
@@ -23,7 +23,7 @@ const ServiceCard = ({ service }) => {
     <div className="max-w-[380px] w-full bg-white rounded-md shadow-md dark:bg-slate-800 drop-shadow-2xl dark:text-gray-100 p-3 flex flex-col justify-between text-center hover:-translate-y-1 duration-300 relative">
       <div className="bg-orange-500 text-white p-1.5 rounded-full absolute top-1 right-1">
         <span className="font-serif">৳</span>
-        {"764"}
+        {price}
       </div>
       <div>
         <PhotoProvider>

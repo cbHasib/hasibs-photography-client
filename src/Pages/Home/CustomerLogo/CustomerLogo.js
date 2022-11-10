@@ -32,7 +32,7 @@ const CustomerLogo = () => {
             <img
               src={typeForm}
               alt="Typeform Logo"
-              className="block object-contain h-16"
+              className="block object-contain h-16 dark:fill-white"
             />
           </div>
           <div className="flex items-center justify-center p-6 bg-opacity-25 dark:bg-slate-800 bg-blue-200 rounded-md">

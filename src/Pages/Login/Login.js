@@ -38,11 +38,35 @@ const Login = () => {
     try {
       signIn(email, password)
         .then((result) => {
-          toast.success("Login Successful");
-          navigate(from, { replace: true });
-          e.target.reset();
+          const currentUser = {
+            email: result.user.email,
+            uid: result.user.uid,
+            displayName: result.user.displayName,
+          };
+
+          // JWT TOKEN
+          fetch(`${process.env.REACT_APP_SERVER_URL}/jwt`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(currentUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              // SET TOKEN TO LOCAL STORAGE
+              localStorage.setItem("token", data.token);
+              navigate(from, { replace: true });
+              toast.success("Login Successful");
+              e.target.reset();
+            })
+            .catch((error) => {
+              toast.error(error.message);
+            });
+          setLoading(false);
         })
         .catch((error) => {
+          setLoading(false);
           toast.error(error.message);
         });
     } catch (error) {
@@ -54,8 +78,27 @@ const Login = () => {
   const handleGoogleLogin = () => {
     loginWithGoogle()
       .then((result) => {
-        navigate(from, { replace: true });
-        toast.success(`Welcome ${result.user.displayName}`);
+        const currentUser = {
+          email: result.user.email,
+          uid: result.user.uid,
+          displayName: result.user.displayName,
+        };
+
+        // JWT TOKEN
+        fetch(`${process.env.REACT_APP_SERVER_URL}/jwt`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // SET TOKEN TO LOCAL STORAGE
+            localStorage.setItem("token", data.token);
+            navigate(from, { replace: true });
+            toast.success(`Welcome ${result.user.displayName}`);
+          });
       })
       .catch((error) => {
         toast.error(error.message);
@@ -66,8 +109,27 @@ const Login = () => {
   const handleGithubLogin = () => {
     loginWithGitHub()
       .then((result) => {
-        navigate(from, { replace: true });
-        toast.success(`Welcome ${result.user.displayName}`);
+        const currentUser = {
+          email: result.user.email,
+          uid: result.user.uid,
+          displayName: result.user.displayName,
+        };
+
+        // JWT TOKEN
+        fetch(`${process.env.REACT_APP_SERVER_URL}/jwt`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // SET TOKEN TO LOCAL STORAGE
+            localStorage.setItem("token", data.token);
+            navigate(from, { replace: true });
+            toast.success(`Welcome ${result.user.displayName}`);
+          });
       })
       .catch((error) => {
         toast.error(error.message);

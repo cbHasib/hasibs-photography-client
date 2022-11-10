@@ -39,13 +39,37 @@ const Register = () => {
 
     register(email, password)
       .then((result) => {
-        const user = result.user;
-        e.target.reset();
-        toast.success("Account Registration Successful!");
-        updateProfile(user, {
-          displayName: name,
-          photoURL: photoURL,
+        const currentUser = {
+          email: result.user.email,
+          uid: result.user.uid,
+          displayName: result.user.displayName,
+        };
+
+        fetch(`${process.env.REACT_APP_SERVER_URL}/jwt`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
         })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+
+            // SET TOKEN TO LOCAL STORAGE
+            localStorage.setItem("token", data.token);
+            navigate(from, { replace: true });
+            toast.success("Login Successful");
+            const user = result.user;
+            e.target.reset();
+            toast.success("Account Registration Successful!");
+            updateProfile(user, {
+              displayName: name,
+              photoURL: photoURL,
+            }).catch((error) => {
+              toast.error(error.message);
+            });
+          })
           .then(() => {
             navigate(from, { replace: true });
             toast.info("Profile Updated");
@@ -63,22 +87,62 @@ const Register = () => {
   const handleGoogleLogin = () => {
     loginWithGoogle()
       .then((result) => {
-        toast.success(`Welcome ${result.user.displayName}`);
-        navigate(from, { replace: true });
+        const currentUser = {
+          email: result.user.email,
+          uid: result.user.uid,
+          displayName: result.user.displayName,
+        };
+
+        // JWT TOKEN
+        fetch(`${process.env.REACT_APP_SERVER_URL}/jwt`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // SET TOKEN TO LOCAL STORAGE
+            localStorage.setItem("token", data.token);
+            navigate(from, { replace: true });
+            toast.success(`Welcome ${result.user.displayName}`);
+          });
       })
       .catch((error) => {
         toast.error(error.message);
+        setLoading(false);
       });
   };
 
   const handleGithubLogin = () => {
     loginWithGitHub()
       .then((result) => {
-        navigate(from, { replace: true });
-        toast.success(`Welcome ${result.user.displayName}`);
+        const currentUser = {
+          email: result.user.email,
+          uid: result.user.uid,
+          displayName: result.user.displayName,
+        };
+
+        // JWT TOKEN
+        fetch(`${process.env.REACT_APP_SERVER_URL}/jwt`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // SET TOKEN TO LOCAL STORAGE
+            localStorage.setItem("token", data.token);
+            navigate(from, { replace: true });
+            toast.success(`Welcome ${result.user.displayName}`);
+          });
       })
       .catch((error) => {
         toast.error(error.message);
+        setLoading(false);
       });
   };
 
