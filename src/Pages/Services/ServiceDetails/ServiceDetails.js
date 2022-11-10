@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   FaCalendar,
   FaEnvelope,
@@ -12,36 +12,59 @@ import CustomerReview from "./CustomerReview";
 import AddReview from "./AddReview";
 import UserRequired from "./UserRequired";
 import { AuthContext } from "../../../Context/UserContext";
+import { useParams } from "react-router-dom";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
-  const images = [
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png",
-    "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
-    "https://static.vecteezy.com/packs/media/vectors/term-bg-1-666de2d9.jpg",
-    "https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300",
-  ];
+  const [count, setCount] = useState(0);
+  const [limit, setLimit] = useState(6);
+  const [page, setPage] = useState(1);
+  const [error, setError] = useState(null);
+  const [load, setLoad] = useState(false);
+
+  const [service, setService] = useState({});
+  const { _id, title, details, price, thumbnail, rating, gallery } = service;
+
+  const { id } = useParams();
+  console.log(id);
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/service/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setError(null);
+          setService(data.data);
+        } else {
+          setError(data.error);
+        }
+        setLoad(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoad(false);
+      });
+  }, [id]);
+
+  console.log(service);
 
   return (
     <div>
       <div className="relative">
         <img
-          src="https://images.pexels.com/photos/3747463/pexels-photo-3747463.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+          src={thumbnail}
+          alt={title}
           className="absolute inset-0 object-cover w-full h-full"
-          alt=""
         />
         <div className="relative bg-gradient-to-r from-gray-900 to-black opacity-75">
-          <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+          <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-32">
             <div className="flex flex-col items-center justify-between xl:flex-row">
               <div className="w-full flex flex-col justify-center items-center max-w-7xl mx-auto text-center">
-                <h2 className="mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
-                  Wedding Photography
+                <h2 className="mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none lg:6xl">
+                  {title}
                 </h2>
-                <p className="max-w-xl mx-auto mb-4 text-base text-gray-300 md:text-lg">
-                  Capture your special moments with Hasibul Hasan.
-                </p>
                 <button
                   onClick={() => {
                     document
@@ -74,48 +97,22 @@ const ServiceDetails = () => {
           <div className="col-span-3 lg:col-span-2 bg-white rounded-md dark:bg-slate-800 shadow-md pt-6 pb-12 px-5 lg:px-10">
             <div className="flex justify-between items-center pb-2 dark:text-white/80">
               <h2 className="text-2xl font-bold mb-3">Service Details</h2>
-              <h2 className="text-xl font-semibold mb-3">Price: ৳764</h2>
+              <h2 className="text-xl font-semibold mb-3">Price: ৳{price}</h2>
             </div>
-            <p className="text-justify mb-7 dark:text-white/75">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-              temporibus cupiditate quisquam? Cumque dolores eaque enim qui
-              veritatis, voluptatem corrupti, veniam repellat ducimus distinctio
-              perferendis explicabo est nulla perspiciatis eius? Vitae iure
-              nobis blanditiis necessitatibus est fugit id autem voluptate quia!
-              Doloremque, praesentium. Dicta nesciunt magni fugiat. Commodi
-              porro illo eius quis consequatur tempora at. Quis ducimus
-              repudiandae iure sapiente perspiciatis. Ducimus ullam sit magni
-              exercitationem tempore ipsa voluptatibus, sunt neque voluptatum,
-              aliquam aperiam. Laboriosam, modi quibusdam magni ipsum tempora
-              beatae officiis quaerat quam mollitia ducimus dolor labore
-              officia! Recusandae eveniet quidem incidunt perspiciatis sequi
-              repellat. Culpa doloremque sit obcaecati aut illo deleniti enim
-              assumenda, repellendus doloribus, beatae eaque itaque nisi quod
-              dolores minus quas aliquam deserunt maxime facere sequi!
-              Consequuntur commodi magni non enim sed ut inventore. Nostrum
-              maxime tempore ipsam quis dicta quasi magnam unde temporibus porro
-              voluptatem suscipit iste blanditiis aperiam, eius molestiae
-              incidunt tempora quae sint doloribus maiores vero! Minus officia
-              sit dolor voluptates, tempora temporibus quas accusantium
-              excepturi explicabo esse, tenetur animi quod cumque beatae libero
-              expedita, odio vel totam voluptatum illo placeat pariatur veniam?
-              Harum unde voluptates id quis facilis voluptatem cum dolor
-              veritatis nemo, voluptatibus nisi, eum dolores deserunt quos
-              commodi. Aliquid, quas.
-            </p>
+            <p className="text-justify mb-7 dark:text-white/75">{details}</p>
 
             <h2 className="text-2xl font-bold mt-5 mb-3 dark:text-white/80">
               Service Gallery
             </h2>
             <PhotoProvider>
               <div className="flex flex-wrap gap-5 justify-center">
-                {images.map((item, index) => (
+                {gallery?.map((item, index) => (
                   <PhotoView key={index} src={item}>
                     <figure className="relative">
                       <img
                         src={item}
                         alt=""
-                        className="w-[120px] h-[120px] object-cover cursor-pointer rounded-md"
+                        className="w-[120px] h-[120px] object-cover hover:cursor-pointer rounded-md"
                       />
                       <div className="absolute inset-0 duration-300 hover:bg-blue-800 hover:bg-opacity-50 rounded-md"></div>
                     </figure>
