@@ -25,6 +25,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ServiceDetails from "../Pages/Services/ServiceDetails/ServiceDetails";
 import Services from "../Pages/Services/Services/Services";
+import PrivateRouter from "./PrivateRouter";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: MainLayout } = require("../Layout/MainLayout");
@@ -75,80 +76,156 @@ export const Router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRouter>
+        <DashboardLayout />
+      </PrivateRouter>
+    ),
     children: [
       {
         index: true,
-        element: <Dashboard />,
+        element: (
+          <PrivateRouter>
+            <Dashboard />
+          </PrivateRouter>
+        ),
       },
       {
         index: true,
         path: "/admin/dashboard",
-        element: <Dashboard />,
+        element: (
+          <PrivateRouter>
+            <Dashboard />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/services",
-        element: <ServicesControl />,
+        element: (
+          <PrivateRouter>
+            <ServicesControl />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/services/update-service/:id",
-        element: <EditService />,
+        element: (
+          <PrivateRouter>
+            <EditService />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/services/add-service",
-        element: <AddNewService />,
+        element: (
+          <PrivateRouter>
+            <AddNewService />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/my-reviews",
-        element: <MyReviews />,
+        element: (
+          <PrivateRouter>
+            <MyReviews />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/my-reviews/edit-review/:id",
-        element: <UpdateMyReview />,
+        element: (
+          <PrivateRouter>
+            <UpdateMyReview />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/inbox",
-        element: <Inbox />,
+        element: (
+          <PrivateRouter>
+            <Inbox />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/inbox/view/:id",
-        element: <ViewMail />,
+        element: (
+          <PrivateRouter>
+            <ViewMail />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/request",
-        element: <BookingRequest />,
+        element: (
+          <PrivateRouter>
+            <BookingRequest />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/request/view/:id",
-        element: <ViewBook />,
+        element: (
+          <PrivateRouter>
+            <ViewBook />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/blogs",
-        element: <ManageBlog />,
+        element: (
+          <PrivateRouter>
+            <ManageBlog />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/blogs/add-author",
-        element: <AddNewBlogAuthor />,
+        element: (
+          <PrivateRouter>
+            <AddNewBlogAuthor />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/blogs/add-category",
-        element: <AddNewBlogCategory />,
+        element: (
+          <PrivateRouter>
+            <AddNewBlogCategory />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/blogs/add-new-blog",
-        element: <AddNewBlog />,
+        element: (
+          <PrivateRouter>
+            <AddNewBlog />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/blogs/update-blog/:id",
-        element: <UpdateBlog />,
+        element: (
+          <PrivateRouter>
+            <UpdateBlog />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/blogs/update-author/:id",
-        element: <UpdateBlogAuthor />,
+        element: (
+          <PrivateRouter>
+            <UpdateBlogAuthor />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/admin/blogs/update-category/:id",
-        element: <UpdateBlogCategory />,
+        element: (
+          <PrivateRouter>
+            <UpdateBlogCategory />
+          </PrivateRouter>
+        ),
       },
     ],
   },
