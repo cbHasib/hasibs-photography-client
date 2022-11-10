@@ -7,7 +7,7 @@ import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
 const ShowServices = () => {
   const [load, setLoad] = useState(true);
   const [refresh, setRefresh] = useState(false);
-  const [courses, setCourses] = useState([]);
+  const [services, setServices] = useState([]);
 
   useEffect(() => {
     setLoad(true);
@@ -15,12 +15,11 @@ const ShowServices = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setCourses(data.data);
-          setLoad(false);
+          setServices(data.data.reverse());
         } else {
           toast.error(data.error);
-          setLoad(false);
         }
+        setLoad(false);
       })
       .catch((error) => {
         toast.error(error.message);
@@ -34,7 +33,7 @@ const ShowServices = () => {
     );
 
     if (userConfirmed) {
-      fetch(`${process.env.REACT_APP_SERVER_URL}/delete-course/${id}`, {
+      fetch(`${process.env.REACT_APP_SERVER_URL}/delete-service/${id}`, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",
@@ -63,41 +62,37 @@ const ShowServices = () => {
           <div className="h-full w-full flex items-center justify-center">
             <Table>
               <Table.Head>
-                <Table.HeadCell>ID</Table.HeadCell>
                 <Table.HeadCell>Image</Table.HeadCell>
-                <Table.HeadCell>Name</Table.HeadCell>
-                <Table.HeadCell>Slug</Table.HeadCell>
+                <Table.HeadCell>Title</Table.HeadCell>
                 <Table.HeadCell>Price</Table.HeadCell>
                 <Table.HeadCell>
                   <span className="sr-only">Edit</span>
                 </Table.HeadCell>
               </Table.Head>
               <Table.Body className="divide-y">
-                {courses?.map((course) => (
+                {services?.map((service) => (
                   <Table.Row
                     className="bg-white dark:border-gray-700 dark:bg-gray-800"
-                    key={course._id}
+                    key={service._id}
                   >
-                    <Table.Cell> {course._id}</Table.Cell>
                     <Table.Cell>
-                      <Avatar img={course.thumbnail} />
+                      <Avatar img={service.thumbnail} />
                     </Table.Cell>
-                    <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                      {course.course_title}
+                    <Table.Cell className="font-medium text-gray-900 dark:text-white">
+                      {service.title}
                     </Table.Cell>
-                    <Table.Cell>{course.course_slug}</Table.Cell>
-                    <Table.Cell>{course.price}</Table.Cell>
+                    <Table.Cell>{service.price}</Table.Cell>
                     <Table.Cell>
                       <div className="flex gap-5">
                         <Link
-                          to={`/courses/update-course/${course._id}`}
+                          to={`/admin/services/update-service/${service._id}`}
                           className="font-medium text-blue-600 hover:underline dark:text-blue-500"
                         >
                           Edit
                         </Link>
                         <span
                           onClick={() =>
-                            handleDelete(course?._id, course?.course_title)
+                            handleDelete(service?._id, service?.service_title)
                           }
                           className="font-medium text-red-600 hover:underline dark:text-red-500 hover:cursor-pointer"
                         >
