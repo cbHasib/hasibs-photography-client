@@ -4,6 +4,8 @@ import { FaEnvelope, FaGithub, FaGoogle, FaUnlock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/UserContext";
+import useScrollToTop from "../../hooks/useScrollToTop";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +14,8 @@ const Login = () => {
     setIsOpen(true);
   };
 
+  useScrollToTop();
+  useTitle("Login");
   const hideModal = () => {
     setIsOpen(false);
   };

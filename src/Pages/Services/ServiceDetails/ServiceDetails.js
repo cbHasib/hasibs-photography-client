@@ -181,7 +181,11 @@ const ServiceDetails = () => {
                   <CustomerReview rating={rating} />
                 </div>
                 <div className="mt-16">
-                  {user ? <AddReview /> : <UserRequired />}
+                  {user ? (
+                    <AddReview serviceId={_id} serviceName={title} />
+                  ) : (
+                    <UserRequired />
+                  )}
                 </div>
               </div>
 

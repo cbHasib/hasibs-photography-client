@@ -11,8 +11,13 @@ import {
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Context/UserContext";
+import useScrollToTop from "../../hooks/useScrollToTop";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
+  useScrollToTop();
+  useTitle("Register");
+
   const { loginWithGoogle, loginWithGitHub, register, setLoading } =
     useContext(AuthContext);
 
