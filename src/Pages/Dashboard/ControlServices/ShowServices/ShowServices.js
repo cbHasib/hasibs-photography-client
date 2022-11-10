@@ -1,5 +1,6 @@
-import { Avatar, Table } from "flowbite-react";
+import { Avatar, Button, Modal, Table } from "flowbite-react";
 import React, { useEffect, useState } from "react";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
@@ -8,6 +9,8 @@ const ShowServices = () => {
   const [load, setLoad] = useState(true);
   const [refresh, setRefresh] = useState(false);
   const [services, setServices] = useState([]);
+  const [show, setShow] = useState(false);
+  const [id, setId] = useState("");
 
   useEffect(() => {
     setLoad(true);
@@ -27,30 +30,29 @@ const ShowServices = () => {
       });
   }, [refresh]);
 
-  const handleDelete = (id, title) => {
-    const userConfirmed = window.confirm(
-      `Are you sure to DELETE ${title} from database?`
-    );
+  const handleDelete = (id) => {
+    setLoad(true);
 
-    if (userConfirmed) {
-      fetch(`${process.env.REACT_APP_SERVER_URL}/delete-service/${id}`, {
-        method: "DELETE",
-        headers: {
-          "content-type": "application/json",
-        },
+    fetch(`${process.env.REACT_APP_SERVER_URL}/delete-service/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          toast.success(data.message);
+          setRefresh(!refresh);
+        } else {
+          toast.error(data.error);
+        }
+        setLoad(false);
       })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success) {
-            toast.success(data.message);
-            setRefresh(!refresh);
-            setLoad(true);
-          } else {
-            toast.error(data.error);
-          }
-        })
-        .catch((error) => toast.error(error.message));
-    }
+      .catch((error) => {
+        toast.error(error.message);
+        setLoad(false);
+      });
   };
 
   return (
@@ -91,9 +93,10 @@ const ShowServices = () => {
                           Edit
                         </Link>
                         <span
-                          onClick={() =>
-                            handleDelete(service?._id, service?.service_title)
-                          }
+                          onClick={() => {
+                            setId(service._id);
+                            setShow(true);
+                          }}
                           className="font-medium text-red-600 hover:underline dark:text-red-500 hover:cursor-pointer"
                         >
                           Delete
@@ -104,6 +107,44 @@ const ShowServices = () => {
                 ))}
               </Table.Body>
             </Table>
+          </div>
+          <div>
+            <Modal
+              show={show}
+              size="md"
+              popup={true}
+              onClose={() => setShow(false)}
+            >
+              <Modal.Header />
+              <Modal.Body>
+                <div className="text-center">
+                  <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
+                  <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                    Are you sure you want to delete this service?
+                  </h3>
+                  <div className="flex justify-center gap-4">
+                    <Button
+                      color="failure"
+                      onClick={() => {
+                        handleDelete(id);
+                        setShow(false);
+                      }}
+                    >
+                      Yes, I'm sure
+                    </Button>
+                    <Button
+                      color="gray"
+                      onClick={() => {
+                        setShow(false);
+                        setId("");
+                      }}
+                    >
+                      No, cancel
+                    </Button>
+                  </div>
+                </div>
+              </Modal.Body>
+            </Modal>
           </div>
         </div>
       )}
