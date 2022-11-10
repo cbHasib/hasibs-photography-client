@@ -18,6 +18,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import Inbox from "../Pages/Dashboard/Inbox/Inbox";
 import ViewMail from "../Pages/Dashboard/Inbox/ViewMail";
 import MyReviews from "../Pages/Dashboard/MyReviews/MyReviews";
+import UpdateMyReview from "../Pages/Dashboard/MyReviews/UpdateMyReview";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ServiceDetails from "../Pages/Services/ServiceDetails/ServiceDetails";
@@ -99,6 +100,10 @@ export const Router = createBrowserRouter([
       {
         path: "/admin/my-reviews",
         element: <MyReviews />,
+      },
+      {
+        path: "/admin/my-reviews/edit-review/:id",
+        element: <UpdateMyReview />,
       },
       {
         path: "/admin/inbox",
