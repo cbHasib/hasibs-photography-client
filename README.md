@@ -4,6 +4,15 @@ This project was made by [Hasibul Hasan](https://github.com/cbHasib) with [React
 
 <br>
 
+## **`What I used?`**
+
+Mainly I have used these as my coding: \
+<span style="color:#00C707">**1. HTML, CSS, TailwindCSS, ReactJS, JavaScript for Front-end** </span> \
+<span style="color:#00C707">**2. NodeJS with ExpressJS for Server Site** </span> \
+<span style="color:#00C707">**2. NMongoDB for Database** </span>
+
+<br>
+
 ## **`Feature List`**
 
 In the project directory, you will find these feature: \
