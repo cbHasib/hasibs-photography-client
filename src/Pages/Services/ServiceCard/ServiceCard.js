@@ -46,7 +46,7 @@ const ServiceCard = ({ service }) => {
               <Rating.Star filled={rating >= 2 ? true : false} />
               <Rating.Star filled={rating >= 3 ? true : false} />
               <Rating.Star filled={rating >= 4 ? true : false} />
-              <Rating.Star filled={rating === 5 ? true : false} />
+              <Rating.Star filled={rating >= 4.6 ? true : false} />
             </Rating>
           </div>
         </div>
