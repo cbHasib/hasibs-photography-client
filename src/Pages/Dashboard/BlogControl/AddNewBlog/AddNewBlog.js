@@ -1,4 +1,11 @@
-import { Button, Label, Select, Textarea, TextInput } from "flowbite-react";
+import {
+  Button,
+  FileInput,
+  Label,
+  Select,
+  Textarea,
+  TextInput,
+} from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -246,19 +253,15 @@ const AddNewBlog = () => {
             </div>
 
             <div>
-              <div>
-                <div className="mb-2 block w-full">
-                  <Label htmlFor="thumbnail" value="Blog Thumbnail" />
-                </div>
-                <TextInput
-                  {...register("thumbnail")}
-                  id="thumbnail"
-                  type="file"
-                  placeholder="www.example.com/image.jpg"
-                  shadow={true}
-                  accept="image/*"
-                />
+              <div className="mb-2 block w-full">
+                <Label htmlFor="thumbnail" value="Upload Blog Thumbnail" />
               </div>
+              <FileInput
+                accept="image/*"
+                id="thumbnail"
+                {...register("thumbnail")}
+                helperText="A blog thumbnail picture is useful to the user"
+              />
             </div>
 
             <div>
