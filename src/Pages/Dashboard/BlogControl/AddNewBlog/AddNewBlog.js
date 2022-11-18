@@ -92,7 +92,7 @@ const AddNewBlog = () => {
     formData.append("image", data.thumbnail[0]);
 
     const response = await fetch(
-      `https://api.imgbb.com/1/upload?key=3f79fe9537e2ca5615fe5952b046cfbf&name=${data.title}`,
+      `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMGBB_KEY}&name=${data.title}`,
       {
         method: "POST",
         body: formData,
