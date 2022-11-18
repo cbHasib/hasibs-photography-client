@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import useScrollToTop from "../../../../hooks/useScrollToTop";
 import useTitle from "../../../../hooks/useTitle";
 import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
+import defaultBlog from "../../../../assets/images/blog_default.png";
 
 const AddNewBlog = () => {
   const [load, setLoad] = useState(true);
@@ -61,7 +62,7 @@ const AddNewBlog = () => {
   const today = makeDate[0] + " " + makeDate[1] + ", " + makeDate[2];
   // Date
 
-  const handleAddBlog = (data) => {
+  const handleAddBlog = async (data) => {
     setLoad(true);
     const { author, postCategory } = data;
 
@@ -79,6 +80,25 @@ const AddNewBlog = () => {
     data["author_id"] = author_id;
     data["cat_id"] = cat_id;
     data.postCategory = postCatName;
+
+    const formData = new FormData();
+    formData.append("image", data.thumbnail[0]);
+
+    const response = await fetch(
+      `https://api.imgbb.com/1/upload?key=3f79fe9537e2ca5615fe5952b046cfbf&name=${data.title}`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const imgData = await response.json();
+
+    if (imgData.success) {
+      data.thumbnail = imgData.data.display_url;
+    } else {
+      data.thumbnail = defaultBlog;
+    }
 
     fetch(`${process.env.REACT_APP_SERVER_URL}/add-new-blog`, {
       method: "POST",
@@ -233,10 +253,10 @@ const AddNewBlog = () => {
                 <TextInput
                   {...register("thumbnail")}
                   id="thumbnail"
-                  type="url"
+                  type="file"
                   placeholder="www.example.com/image.jpg"
-                  required={true}
                   shadow={true}
+                  accept="image/*"
                 />
               </div>
             </div>
