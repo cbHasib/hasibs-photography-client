@@ -13,7 +13,7 @@ const Contact = () => {
     const id = toast.loading("Please wait email sending...");
 
     // Send data to server
-    fetch(`${process.env.REACT_APP_serverURL}/contact-form`, {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/contact-form`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

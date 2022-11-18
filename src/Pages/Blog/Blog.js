@@ -11,7 +11,7 @@ const Blog = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_serverURL}/blogs`)
+    fetch(`${process.env.REACT_APP_SERVER_URL}/blogs`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

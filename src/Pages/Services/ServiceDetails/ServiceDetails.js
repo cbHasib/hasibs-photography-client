@@ -72,7 +72,7 @@ const ServiceDetails = () => {
     const id = toast.loading("Please wait booking email sending...");
 
     // Send data to server
-    fetch(`${process.env.REACT_APP_serverURL}/booking-form`, {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/booking-form`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

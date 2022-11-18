@@ -13,7 +13,7 @@ const SingleBlog = () => {
   const [blog, setBlog] = useState({});
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_serverURL}/single-blog/${cat_slug}/${slug}`)
+    fetch(`${process.env.REACT_APP_SERVER_URL}/single-blog/${cat_slug}/${slug}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
